@@ -71,8 +71,9 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
+        const baseURL = import.meta.env.VITE_API_URL || '/api/v1';
         const response = await axios.post(
-          '/api/v1/auth/refresh',
+          `${baseURL.replace(/\/$/, '')}/auth/refresh`,
           {},
           { withCredentials: true }
         );
