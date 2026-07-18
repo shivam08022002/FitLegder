@@ -5,7 +5,7 @@ import * as authService from './service';
 const REFRESH_COOKIE_OPTIONS = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
-  sameSite: 'strict' as const,
+  sameSite: process.env.NODE_ENV === 'production' ? ('none' as const) : ('lax' as const),
   maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
   path: '/',
 };
@@ -79,7 +79,8 @@ export async function logout(req: AuthRequest, res: Response, next: NextFunction
     if (req.userId) {
       await authService.logout(req.userId);
     }
-    res.clearCookie('refreshToken', { path: '/' });
+    const { maxAge, ...clearOptions } = REFRESH_COOKIE_OPTIONS;
+    res.clearCookie('refreshToken', clearOptions);
     res.status(200).json({
       success: true,
       data: null,

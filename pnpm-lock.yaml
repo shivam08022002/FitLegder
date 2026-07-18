@@ -119,7 +119,7 @@ importers:
         version: link:../../packages/validation
       '@hookform/resolvers':
         specifier: ^3.9.0
-        version: 3.10.0(react-hook-form@7.81.0(react@18.3.1))
+        version: 3.10.0(react-hook-form@7.53.0(react@18.3.1))
       '@radix-ui/react-avatar':
         specifier: ^1.1.0
         version: 1.2.2(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -182,7 +182,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-hook-form:
         specifier: ^7.53.0
-        version: 7.81.0(react@18.3.1)
+        version: 7.53.0(react@18.3.1)
       react-router-dom:
         specifier: ^6.28.0
         version: 6.30.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2418,8 +2418,8 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
-  react-hook-form@7.81.0:
-    resolution: {integrity: sha512-ocbmr2p5KBMoAfj4WCUvped33lVi1Kd5DuDUvQDnB6VEAacOjPI/jMbtDdbhco4y9ct4xUuCmMY0b/C9L0QHjw==}
+  react-hook-form@7.53.0:
+    resolution: {integrity: sha512-M1n3HhqCww6S2hxLxciEXy2oISPnAzxY7gvwVPrtlczTM/1dDadXgUxDpHMrMTblDOcm/AXtXxHwZ3jpg1mqKQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -3186,9 +3186,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@hookform/resolvers@3.10.0(react-hook-form@7.81.0(react@18.3.1))':
+  '@hookform/resolvers@3.10.0(react-hook-form@7.53.0(react@18.3.1))':
     dependencies:
-      react-hook-form: 7.81.0(react@18.3.1)
+      react-hook-form: 7.53.0(react@18.3.1)
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -4904,7 +4904,7 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-hook-form@7.81.0(react@18.3.1):
+  react-hook-form@7.53.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 

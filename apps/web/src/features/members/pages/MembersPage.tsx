@@ -220,7 +220,7 @@ export default function MembersPage() {
                             variant="secondary"
                             size="sm"
                             className="h-8 gap-1.5 rounded-full px-3 bg-violet-500/10 hover:bg-violet-500/20 text-violet-300 border border-violet-500/20 text-[11px] font-semibold"
-                            onClick={(e) => { e.stopPropagation(); setMarkingMember(member); }}
+                            onClick={(e: React.MouseEvent) => { e.stopPropagation(); setMarkingMember(member); }}
                           >
                             <UserCheck className="h-3.5 w-3.5" strokeWidth={1.5} />
                             Mark Attendance
