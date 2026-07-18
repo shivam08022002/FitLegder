@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 420 100" fill="none">
+  <defs>
+    <linearGradient id="rec-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="rec-text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#14B8A6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Receipt Iron -->
+  <g transform="translate(16, 8) scale(0.72)">
+    <path d="M30 22 L90 22 L90 85 L75 78 L60 85 L45 78 L30 85 Z" fill="rgba(15,23,42,0.6)" stroke="url(#rec-grad)" stroke-width="1.5" stroke-linejoin="round"/>
+    <line x1="40" y1="36" x2="80" y2="36" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="40" y1="44" x2="70" y2="44" stroke="rgba(139,92,246,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="40" y1="52" x2="75" y2="52" stroke="rgba(139,92,246,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="46" y="60" width="8" height="10" rx="2" fill="url(#rec-grad)" opacity="0.9"/>
+    <rect x="66" y="60" width="8" height="10" rx="2" fill="url(#rec-grad)" opacity="0.9"/>
+    <rect x="54" y="62" width="12" height="6" rx="2" fill="#1E293B"/>
+    <line x1="40" y1="76" x2="80" y2="76" stroke="rgba(20,184,166,0.5)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="108" y="68" font-family="Space Grotesk, Inter, -apple-system, sans-serif" font-weight="700" font-size="46" letter-spacing="-0.02em">
+    <tspan fill="#94A3B8">Fit</tspan><tspan fill="url(#rec-text-grad)">Ledger</tspan>
+  </text>
+</svg>
