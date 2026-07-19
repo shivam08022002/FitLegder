@@ -74,7 +74,7 @@ const features: Feature[] = [
 
 export default function Features() {
   return (
-    <section id="features" className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
+    <section id="features" className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
       <div className="mx-auto mb-10 max-w-2xl text-center md:mb-14">
         <span className="section-label">Everything in one place</span>
         <h2 className="mt-3 text-balance text-2xl font-bold sm:text-4xl md:text-5xl">
@@ -86,25 +86,19 @@ export default function Features() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
           <article
             key={f.title}
-            className={`glass-card glow-border group flex flex-col rounded-2xl p-5 sm:rounded-3xl sm:p-6 ${f.className ?? ''}`}
+            className="glass-card glow-border group flex gap-4 rounded-2xl p-5 transition-all duration-300 hover:bg-white/[0.02] hover:-translate-y-0.5 border border-white/5 bg-white/[0.01] hover:border-violet-500/20 shadow-sm hover:shadow-md hover:shadow-violet-500/5"
           >
-            <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl sm:mb-4 sm:h-11 sm:w-11 sm:rounded-2xl ${f.tone}`}>
-              <f.icon className="h-5 w-5" strokeWidth={1.75} />
+            <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/5 ${f.tone}`}>
+              <f.icon className="h-5 w-5" strokeWidth={1.5} />
             </div>
-            <h3 className="text-base font-semibold text-white sm:text-lg">{f.title}</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-slate-400 sm:mt-2">{f.desc}</p>
-            <ul className={`mt-3 gap-x-6 gap-y-2 sm:mt-4 ${f.className ? 'grid grid-cols-1 sm:grid-cols-2' : 'flex flex-col'}`}>
-              {f.points.map((p) => (
-                <li key={p} className="flex items-center gap-2 text-sm text-slate-300">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
-                  {p}
-                </li>
-              ))}
-            </ul>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm sm:text-base font-bold text-slate-100 transition-colors group-hover:text-white">{f.title}</h3>
+              <p className="mt-1 text-xs sm:text-[13px] leading-relaxed text-slate-400 font-medium">{f.desc}</p>
+            </div>
           </article>
         ))}
       </div>

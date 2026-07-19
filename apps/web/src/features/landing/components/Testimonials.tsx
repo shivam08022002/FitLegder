@@ -26,8 +26,8 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
-      <div className="mx-auto mb-14 max-w-2xl text-center">
+    <section className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
+      <div className="mx-auto mb-10 max-w-2xl text-center">
         <span className="section-label">Loved by gym owners</span>
         <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl md:text-5xl">
           Trusted by fitness businesses everywhere
@@ -36,7 +36,7 @@ export default function Testimonials() {
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {testimonials.map((t) => (
-          <figure key={t.name} className="glass-card glow-border flex flex-col rounded-3xl p-7">
+          <figure key={t.name} className="glass-card glow-border flex flex-col rounded-xl p-5">
             <div className="mb-4 flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />

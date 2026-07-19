@@ -9,10 +9,13 @@ import ForgotPasswordPage from '@/features/auth/pages/ForgotPasswordPage';
 import ResetPasswordPage from '@/features/auth/pages/ResetPasswordPage';
 import ChangePasswordPage from '@/features/auth/pages/ChangePasswordPage';
 import SuperadminOwnersPage from '@/features/superadmin/pages/SuperadminOwnersPage';
+import SuperadminVerificationQueuePage from '@/features/superadmin/pages/SuperadminVerificationQueuePage';
+import SuperadminSaaSSettingsPage from '@/features/superadmin/pages/SuperadminSaaSSettingsPage';
 import DashboardPage from '@/features/dashboard/pages/DashboardPage';
 import MembersPage from '@/features/members/pages/MembersPage';
 import MemberDetailPage from '@/features/members/pages/MemberDetailPage';
 import PlansPage from '@/features/plans/pages/PlansPage';
+import SaaSSubscriptionPage from '@/features/plans/pages/SaaSSubscriptionPage';
 import PaymentsPage from '@/features/payments/pages/PaymentsPage';
 import RenewalsPage from '@/features/renewals/pages/RenewalsPage';
 import ExpiryPage from '@/features/expiry/pages/ExpiryPage';
@@ -86,11 +89,14 @@ export default function App() {
         {isSuperadmin ? (
           <>
             <Route index element={<SuperadminOwnersPage />} />
+            <Route path="verification-queue" element={<SuperadminVerificationQueuePage />} />
+            <Route path="saas-settings" element={<SuperadminSaaSSettingsPage />} />
             <Route path="change-password" element={<ChangePasswordPage />} />
           </>
         ) : (
           <>
-            <Route index element={<DashboardPage />} />
+            <Route index element={<Navigate to="/dashboard" replace />} />
+            <Route path="dashboard" element={<DashboardPage />} />
             <Route path="members" element={<MembersPage />} />
             <Route path="members/:id" element={<MemberDetailPage />} />
             <Route path="plans" element={<PlansPage />} />
@@ -98,6 +104,7 @@ export default function App() {
             <Route path="renewals" element={<RenewalsPage />} />
             <Route path="expiry" element={<ExpiryPage />} />
             <Route path="reports" element={<ReportsPage />} />
+            <Route path="subscription" element={<SaaSSubscriptionPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="events" element={<EventsPage />} />
             <Route path="events/:id/registrations" element={<EventRegistrationsPage />} />

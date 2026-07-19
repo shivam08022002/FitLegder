@@ -9,6 +9,15 @@ export interface IGymDocument extends Document {
   email?: string;
   currency: string;
   timezone: string;
+  // SaaS Subscription fields
+  subscriptionPlan: 'free_trial' | 'tier1' | 'tier2' | 'tier3';
+  subscriptionStatus: 'active' | 'expired' | 'pending_approval';
+  subscriptionExpiresAt: Date;
+  subscriptionPendingPlan?: 'tier1' | 'tier2' | 'tier3' | '';
+  subscriptionPaymentDetails?: {
+    transactionId?: string;
+    submittedAt?: Date;
+  };
 }
 
 const gymSchema = new Schema<IGymDocument>(
@@ -45,6 +54,30 @@ const gymSchema = new Schema<IGymDocument>(
     timezone: {
       type: String,
       default: 'Asia/Kolkata',
+    },
+    // SaaS Subscription fields
+    subscriptionPlan: {
+      type: String,
+      enum: ['free_trial', 'tier1', 'tier2', 'tier3'],
+      default: 'free_trial',
+    },
+    subscriptionStatus: {
+      type: String,
+      enum: ['active', 'expired', 'pending_approval'],
+      default: 'active',
+    },
+    subscriptionExpiresAt: {
+      type: Date,
+      default: () => new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
+    },
+    subscriptionPendingPlan: {
+      type: String,
+      enum: ['tier1', 'tier2', 'tier3', ''],
+      default: '',
+    },
+    subscriptionPaymentDetails: {
+      transactionId: String,
+      submittedAt: Date,
     },
   },
   {

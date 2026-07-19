@@ -3,6 +3,9 @@ import { AuthRequest } from '../../middleware/auth';
 import * as settingsService from './service';
 import { v2 as cloudinary } from 'cloudinary';
 import { env } from '../../config/env';
+import SystemSettings from '../../models/SystemSettings';
+import Gym from '../../models/Gym';
+import { AppError } from '../../middleware/errorHandler';
 
 // Configure Cloudinary if credentials exist
 if (env.CLOUDINARY_CLOUD_NAME && env.CLOUDINARY_API_KEY && env.CLOUDINARY_API_SECRET) {
@@ -53,6 +56,54 @@ export async function uploadLogo(req: AuthRequest, res: Response, next: NextFunc
 
     const gym = await settingsService.updateGymLogo(req.gymId!, logoUrl);
     res.status(200).json({ success: true, data: gym, message: 'Logo uploaded' });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function getSaaSDetails(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    let settings = await SystemSettings.findOne();
+    if (!settings) {
+      settings = new SystemSettings({});
+      await settings.save();
+    }
+    res.status(200).json({
+      success: true,
+      data: settings,
+      message: 'SaaS details fetched successfully',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function requestUpgrade(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    const { plan, transactionId } = req.body;
+    if (!plan || !['tier1', 'tier2', 'tier3'].includes(plan)) {
+      throw new AppError('Invalid subscription plan selected', 400);
+    }
+
+    const gym = await Gym.findById(req.gymId);
+    if (!gym) {
+      throw new AppError('Gym profile not found', 404);
+    }
+
+    gym.subscriptionStatus = 'pending_approval';
+    gym.subscriptionPendingPlan = plan as any;
+    gym.subscriptionPaymentDetails = {
+      transactionId: transactionId || '',
+      submittedAt: new Date(),
+    };
+
+    await gym.save();
+
+    res.status(200).json({
+      success: true,
+      data: gym,
+      message: 'Upgrade request submitted successfully. Waiting for admin approval.',
+    });
   } catch (error) {
     next(error);
   }

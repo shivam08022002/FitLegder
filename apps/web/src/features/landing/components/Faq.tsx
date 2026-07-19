@@ -28,8 +28,8 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative mx-auto max-w-3xl px-6 py-24">
-      <div className="mb-12 text-center">
+    <section id="faq" className="relative mx-auto max-w-3xl px-5 py-10 sm:px-6 md:py-16">
+      <div className="mb-8 text-center">
         <span className="section-label">FAQ</span>
         <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl md:text-5xl">
           Questions, answered
@@ -40,7 +40,7 @@ export default function Faq() {
         {faqs.map((item, i) => {
           const isOpen = open === i;
           return (
-            <div key={item.q} className="glass-card overflow-hidden rounded-2xl">
+            <div key={item.q} className="glass-card overflow-hidden rounded-xl">
               <button
                 type="button"
                 onClick={() => setOpen(isOpen ? null : i)}

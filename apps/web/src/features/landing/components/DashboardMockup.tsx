@@ -42,18 +42,18 @@ export default function DashboardMockup() {
         </div>
 
         {/* Stat cards */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
           {[
             { icon: IndianRupee, label: "Today's Revenue", value: '₹18,400', tone: 'text-emerald-400 bg-emerald-500/15' },
             { icon: Users, label: 'Active Members', value: '842', tone: 'text-violet-400 bg-violet-500/15' },
             { icon: TrendingUp, label: 'Growth', value: '+12.4%', tone: 'text-sky-400 bg-sky-500/15' },
           ].map((s) => (
-            <div key={s.label} className="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-              <div className={`mb-2 flex h-8 w-8 items-center justify-center rounded-lg ${s.tone}`}>
-                <s.icon className="h-4 w-4" strokeWidth={1.75} />
+            <div key={s.label} className="rounded-xl border border-white/5 bg-white/[0.03] p-2 sm:p-3 flex flex-col justify-between">
+              <div className={`mb-1.5 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg ${s.tone} shrink-0`}>
+                <s.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={1.5} />
               </div>
-              <p className="text-[10px] uppercase tracking-wider text-slate-500">{s.label}</p>
-              <p className="mt-0.5 text-base font-bold text-white">{s.value}</p>
+              <p className="text-[8px] sm:text-[10px] uppercase tracking-wider text-slate-500 truncate">{s.label}</p>
+              <p className="mt-0.5 text-xs sm:text-base font-bold text-white truncate">{s.value}</p>
             </div>
           ))}
         </div>

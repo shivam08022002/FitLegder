@@ -11,7 +11,7 @@ const steps: { icon: LucideIcon; title: string; desc: string }[] = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
+    <section id="how-it-works" className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
       <div className="mx-auto mb-10 max-w-2xl text-center md:mb-14">
         <span className="section-label">How it works</span>
         <h2 className="mt-3 text-balance text-2xl font-bold sm:text-4xl md:text-5xl">
@@ -19,17 +19,22 @@ export default function HowItWorks() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {steps.map((s, i) => (
-          <div key={s.title} className="glass-card glow-border relative rounded-2xl p-5 sm:rounded-3xl sm:p-6">
-            <span className="absolute right-6 top-5 text-4xl font-bold text-white/5">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/15 text-violet-400">
-              <s.icon className="h-5 w-5" strokeWidth={1.75} />
+          <div 
+            key={s.title} 
+            className="glass-card glow-border group relative rounded-2xl p-5 border border-white/5 bg-white/[0.01] hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-500/20 shadow-sm hover:shadow-md hover:shadow-violet-500/5"
+          >
+            <div className="flex items-center justify-between gap-3 mb-3.5">
+              <span className="inline-flex items-center justify-center rounded-md bg-violet-500/10 border border-violet-500/20 px-2.5 py-0.5 text-[10px] font-bold text-violet-400 uppercase tracking-widest">
+                Step {i + 1}
+              </span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-500/10 border border-violet-500/10 text-violet-400 group-hover:scale-105 transition-transform duration-300">
+                <s.icon className="h-4.5 w-4.5" strokeWidth={1.5} />
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-white">{s.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-400">{s.desc}</p>
+            <h3 className="text-sm sm:text-base font-bold text-slate-100 group-hover:text-white transition-colors">{s.title}</h3>
+            <p className="mt-1 text-xs sm:text-[13px] leading-relaxed text-slate-400 font-medium">{s.desc}</p>
           </div>
         ))}
       </div>

@@ -7,6 +7,7 @@ import Payment from '../../models/Payment';
 import Membership from '../../models/Membership';
 import Event from '../../models/Event';
 import { AppError } from '../../middleware/errorHandler';
+import SystemSettings from '../../models/SystemSettings';
 
 export async function getOwners(req: Request, res: Response, next: NextFunction) {
   try {
@@ -67,6 +68,9 @@ export async function createOwner(req: Request, res: Response, next: NextFunctio
       name: gymName,
       email: email.toLowerCase(),
       contactNumber: phone,
+      subscriptionPlan: 'free_trial',
+      subscriptionStatus: 'active',
+      subscriptionExpiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     });
     await gym.save();
 
@@ -194,6 +198,114 @@ export async function deleteOwner(req: Request, res: Response, next: NextFunctio
       success: true,
       data: null,
       message: 'Owner and all associated data deleted successfully',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function getSaaSSettings(req: Request, res: Response, next: NextFunction) {
+  try {
+    let settings = await SystemSettings.findOne();
+    if (!settings) {
+      settings = new SystemSettings({});
+      await settings.save();
+    }
+    res.status(200).json({
+      success: true,
+      data: settings,
+      message: 'SaaS settings fetched successfully',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function updateSaaSSettings(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { upiId, qrCode, accountDetails, plans } = req.body;
+    let settings = await SystemSettings.findOne();
+    if (!settings) {
+      settings = new SystemSettings({});
+    }
+
+    if (upiId !== undefined) settings.upiId = upiId;
+    if (qrCode !== undefined) settings.qrCode = qrCode;
+    if (accountDetails !== undefined) settings.accountDetails = accountDetails;
+    if (plans !== undefined) settings.plans = plans as any;
+
+    await settings.save();
+
+    res.status(200).json({
+      success: true,
+      data: settings,
+      message: 'SaaS settings updated successfully',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function getPendingUpgrades(req: Request, res: Response, next: NextFunction) {
+  try {
+    const gyms = await Gym.find({ subscriptionStatus: 'pending_approval' }).populate('owner', 'name email phone');
+    res.status(200).json({
+      success: true,
+      data: gyms,
+      message: 'Pending upgrade requests fetched successfully',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function approveUpgrade(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { gymId } = req.params;
+    const gym = await Gym.findById(gymId);
+    if (!gym) {
+      throw new AppError('Gym not found', 404);
+    }
+    if (gym.subscriptionStatus !== 'pending_approval') {
+      throw new AppError('Gym does not have a pending upgrade request', 400);
+    }
+
+    const nextPlan = gym.subscriptionPendingPlan || 'tier1';
+    gym.subscriptionPlan = nextPlan as any;
+    gym.subscriptionStatus = 'active';
+    gym.subscriptionPendingPlan = '';
+    gym.subscriptionExpiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
+    await gym.save();
+
+    res.status(200).json({
+      success: true,
+      data: gym,
+      message: `Gym plan successfully upgraded to ${nextPlan}`,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function rejectUpgrade(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { gymId } = req.params;
+    const gym = await Gym.findById(gymId);
+    if (!gym) {
+      throw new AppError('Gym not found', 404);
+    }
+    if (gym.subscriptionStatus !== 'pending_approval') {
+      throw new AppError('Gym does not have a pending upgrade request', 400);
+    }
+
+    gym.subscriptionStatus = new Date() > gym.subscriptionExpiresAt ? 'expired' : 'active';
+    gym.subscriptionPendingPlan = '';
+    await gym.save();
+
+    res.status(200).json({
+      success: true,
+      data: gym,
+      message: 'Upgrade request rejected successfully',
     });
   } catch (error) {
     next(error);

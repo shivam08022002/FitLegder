@@ -27,6 +27,15 @@ export interface IGym extends Timestamps {
   email?: string;
   currency: string;
   timezone: string;
+  // SaaS Subscription fields
+  subscriptionPlan: 'free_trial' | 'tier1' | 'tier2' | 'tier3';
+  subscriptionStatus: 'active' | 'expired' | 'pending_approval';
+  subscriptionExpiresAt: string;
+  subscriptionPendingPlan?: 'tier1' | 'tier2' | 'tier3' | '';
+  subscriptionPaymentDetails?: {
+    transactionId?: string;
+    submittedAt?: string;
+  };
 }
 
 // ─── Member ──────────────────────────────────────────────────

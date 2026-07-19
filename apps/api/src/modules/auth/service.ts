@@ -46,6 +46,9 @@ export async function register(data: {
     name: data.gymName,
     email: data.email.toLowerCase(),
     contactNumber: data.phone,
+    subscriptionPlan: 'free_trial',
+    subscriptionStatus: 'active',
+    subscriptionExpiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
   });
   await gym.save();
 

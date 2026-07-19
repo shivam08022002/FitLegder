@@ -18,7 +18,7 @@ const withFit = [
 
 export default function WhyChoose() {
   return (
-    <section className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
+    <section className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
       <div className="mx-auto mb-10 max-w-2xl text-center md:mb-14">
         <span className="section-label">Why FitLedger</span>
         <h2 className="mt-3 text-balance text-2xl font-bold sm:text-4xl md:text-5xl">
@@ -26,9 +26,9 @@ export default function WhyChoose() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {/* Without */}
-        <div className="glass-card rounded-2xl border-white/5 p-6 sm:rounded-3xl sm:p-8">
+        <div className="glass-card rounded-xl border border-white/5 p-5 sm:p-6">
           <h3 className="mb-6 flex items-center gap-2 text-lg font-semibold text-slate-300">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-rose-500/15 text-rose-400">
               <X className="h-4 w-4" />
@@ -46,7 +46,7 @@ export default function WhyChoose() {
         </div>
 
         {/* With */}
-        <div className="glass-card glow-border rounded-3xl p-8">
+        <div className="glass-card glow-border rounded-xl p-5 sm:p-6">
           <h3 className="mb-6 flex items-center gap-2 text-lg font-semibold text-white">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
               <Check className="h-4 w-4" />

@@ -23,11 +23,11 @@ const trustedSegments = [
 
 function Background() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#0B0E14]">
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#050508]">
       <div className="grid-pattern absolute inset-0 opacity-60" />
-      <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-violet-600/20 [animation:aurora-drift_16s_ease-in-out_infinite]" />
-      <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-fuchsia-500/15 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
-      <div className="aurora-blob bottom-[-10%] left-[30%] h-[500px] w-[500px] bg-sky-500/10 [animation:aurora-drift_24s_ease-in-out_infinite]" />
+      <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-violet-600/25 [animation:aurora-drift_16s_ease-in-out_infinite]" />
+      <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-fuchsia-500/20 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
+      <div className="aurora-blob bottom-[-10%] left-[30%] h-[500px] w-[500px] bg-sky-500/15 [animation:aurora-drift_24s_ease-in-out_infinite]" />
     </div>
   );
 }
@@ -46,12 +46,12 @@ function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'border-b border-white/5 bg-[#0B0E14]/80 backdrop-blur-xl' : 'border-b border-transparent'
+        scrolled ? 'border-b border-white/5 bg-[#050508]/40 backdrop-blur-xl' : 'border-b border-transparent'
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
         <Link to="/" className="flex items-center">
-          <img src={fitledgerLockup} alt="FitLedger" className="h-9 object-contain sm:h-10" />
+          <img src={fitledgerLockup} alt="FitLedger" className="h-11 object-contain sm:h-12" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -84,7 +84,7 @@ function Nav() {
       </nav>
 
       {mobileOpen && (
-        <div className="border-t border-white/5 bg-[#0B0E14]/95 backdrop-blur-xl md:hidden">
+        <div className="border-t border-white/5 bg-[#050508]/95 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-1 px-6 py-4">
             {navLinks.map((l) => (
               <a
@@ -113,7 +113,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative mx-auto max-w-7xl px-5 pb-12 pt-24 sm:px-6 sm:pt-28 md:pb-16 md:pt-40">
+    <section className="relative mx-auto max-w-7xl px-5 pb-8 pt-20 sm:px-6 sm:pt-24 md:pb-16 md:pt-36">
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className="reveal-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300">
@@ -121,34 +121,34 @@ function Hero() {
             All-in-one gym management platform
           </span>
 
-          <h1 className="mt-5 text-balance text-3xl font-bold leading-[1.05] sm:mt-6 sm:text-5xl md:text-6xl">
+          <h1 className="mt-3 text-balance text-3xl font-bold leading-[1.05] sm:mt-5 sm:text-5xl md:text-6xl">
             Manage your gym{' '}
             <span className="gradient-text gradient-animate bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
               like a pro
             </span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-slate-400 sm:mt-5 sm:text-lg">
+          <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-slate-400 sm:mt-4 sm:text-lg">
             Manage members, collect payments, track attendance, monitor renewals and grow your
             fitness business effortlessly — all from one intelligent dashboard.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
-            <Button asChild size="lg" className="shadow-lg shadow-violet-500/25">
-              <Link to="/register">
+          <div className="mt-4 flex flex-row gap-3 sm:mt-6">
+            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-semibold shadow-lg shadow-violet-500/25">
+              <Link to="/register" className="justify-center">
                 Start Free Trial
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 ml-1.5" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link to="/login">
-                <PlayCircle className="h-4 w-4" />
+            <Button asChild variant="outline" className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-semibold">
+              <Link to="/login" className="justify-center">
+                <PlayCircle className="h-4 w-4 mr-1.5" />
                 Watch Demo
               </Link>
             </Button>
           </div>
 
-          <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400 sm:mt-8">
+          <ul className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400 sm:mt-6">
             {['No credit card required', '30-day free trial', 'Cancel anytime'].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
@@ -169,8 +169,8 @@ function Hero() {
 function TrustedBy() {
   const items = [...trustedSegments, ...trustedSegments];
   return (
-    <section className="relative border-y border-white/5 py-10">
-      <p className="mb-6 text-center text-sm text-slate-500">
+    <section className="relative border-y border-white/5 py-6 md:py-10">
+      <p className="mb-4 text-center text-sm text-slate-500">
         Trusted by <span className="font-semibold text-slate-300">1000+</span> fitness businesses
       </p>
       <div className="marquee-mask overflow-hidden">
@@ -188,8 +188,8 @@ function TrustedBy() {
 
 function FinalCta() {
   return (
-    <section className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
-      <div className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 px-5 py-12 text-center sm:rounded-[32px] sm:px-6 sm:py-16 md:py-20">
+    <section className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
+      <div className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 px-5 py-8 text-center sm:rounded-[32px] sm:px-6 sm:py-12 md:py-16">
         <div className="aurora-blob left-1/2 top-0 h-72 w-72 -translate-x-1/2 bg-violet-500/25" />
         <div className="relative">
           <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold sm:text-4xl md:text-5xl">
@@ -199,19 +199,19 @@ function FinalCta() {
             Join thousands of gym owners who run their business smarter with FitLedger.
           </p>
 
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg" className="shadow-lg shadow-violet-500/25">
-              <Link to="/register">
+          <div className="mt-5 flex flex-row justify-center gap-3">
+            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-semibold shadow-lg shadow-violet-500/25">
+              <Link to="/register" className="justify-center">
                 Start Free Trial
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 ml-1.5" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link to="/login">Book Live Demo</Link>
+            <Button asChild variant="outline" className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-semibold">
+              <Link to="/login" className="justify-center">Book Live Demo</Link>
             </Button>
           </div>
 
-          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-300">
+          <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-300">
             {['30-day free trial', 'Setup in minutes', 'No credit card required'].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
@@ -233,31 +233,33 @@ function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-white/5 px-5 py-12 sm:px-6 sm:py-14">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 sm:gap-10 md:grid-cols-5">
-        <div className="col-span-2">
-          <img src={fitledgerLockup} alt="FitLedger" className="h-10 object-contain" />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+    <footer className="relative border-t border-white/5 px-5 py-8 sm:px-6 sm:py-10">
+      <div className="mx-auto flex flex-col gap-8 md:flex-row md:justify-between max-w-7xl">
+        <div className="max-w-sm">
+          <img src={fitledgerLockup} alt="FitLedger" className="h-12 object-contain" />
+          <p className="mt-4 text-sm leading-relaxed text-slate-400">
             The all-in-one platform to manage members, payments, attendance and renewals for your
             fitness business.
           </p>
         </div>
-        {columns.map((col) => (
-          <div key={col.title}>
-            <h4 className="text-sm font-semibold text-white">{col.title}</h4>
-            <ul className="mt-4 space-y-3">
-              {col.links.map((l) => (
-                <li key={l}>
-                  <a href="#features" className="text-sm text-slate-400 transition-colors hover:text-white">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <div className="flex flex-row justify-between gap-6 sm:gap-12 md:gap-16">
+          {columns.map((col) => (
+            <div key={col.title} className="flex-1">
+              <h4 className="text-sm font-semibold text-white">{col.title}</h4>
+              <ul className="mt-4 space-y-3">
+                {col.links.map((l) => (
+                  <li key={l}>
+                    <a href="#features" className="text-sm text-slate-400 transition-colors hover:text-white">
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 sm:flex-row">
+      <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-4 sm:flex-row">
         <p className="text-xs text-slate-500">© {new Date().getFullYear()} FitLedger. All rights reserved.</p>
         <div className="flex items-center gap-4 text-xs text-slate-500">
           <Link to="/login" className="transition-colors hover:text-slate-300">Sign In</Link>

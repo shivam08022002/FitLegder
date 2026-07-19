@@ -24,4 +24,8 @@ router.get('/', settingsController.getSettings);
 router.put('/', validate(updateGymSchema), settingsController.updateSettings);
 router.post('/logo', upload.single('logo'), settingsController.uploadLogo);
 
+// SaaS Subscription Details & Upgrades for Gym Owners
+router.get('/saas-details', settingsController.getSaaSDetails);
+router.post('/upgrade-request', settingsController.requestUpgrade);
+
 export default router;

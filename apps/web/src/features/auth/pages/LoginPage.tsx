@@ -48,12 +48,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative z-0 flex min-h-screen items-center justify-center p-4 overflow-hidden">
-      <div className="auth-bg grid-pattern" />
-      <Card className="w-full max-w-[420px] border-white/10 bg-card/60 backdrop-blur-xl animate-scale-in p-2">
+    <div className="relative z-0 flex min-h-screen items-center justify-center p-4 overflow-hidden bg-[#050508]">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#050508]">
+        <div className="grid-pattern absolute inset-0 opacity-60" />
+        <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-violet-600/25 [animation:aurora-drift_16s_ease-in-out_infinite]" />
+        <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-fuchsia-500/20 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
+        <div className="aurora-blob bottom-[-10%] left-[30%] h-[500px] w-[500px] bg-sky-500/15 [animation:aurora-drift_24s_ease-in-out_infinite]" />
+      </div>
+      <Card className="w-full max-w-[420px] border-white/[0.08] bg-[#050508]/40 shadow-[0_0_50px_-12px_rgba(139,92,246,0.25)] backdrop-blur-2xl animate-scale-in p-2">
         <CardHeader className="text-center pb-3">
           <div className="mx-auto mb-3 flex items-center justify-center">
-            <img src={fitledgerLockup} className="h-14 object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="FitLedger" />
+            <img src={fitledgerLockup} className="h-16 object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="FitLedger" />
           </div>
           <CardTitle className="text-xl font-bold text-balance">Welcome back</CardTitle>
           <CardDescription className="text-slate-400 text-sm mt-1">Sign in to manage your gym dashboard</CardDescription>
@@ -108,7 +113,7 @@ export default function LoginPage() {
 
             <div className="relative py-2 flex items-center justify-center">
               <div className="absolute left-0 right-0 h-px bg-white/5"></div>
-              <span className="relative z-10 px-3 text-[10px] uppercase tracking-widest text-slate-500 bg-[#0B0E14] rounded-full border border-white/5 py-0.5">
+              <span className="relative z-10 px-3 text-[10px] uppercase tracking-widest text-slate-500 bg-[#050508] rounded-full border border-white/5 py-0.5">
                 Credential Authentication
               </span>
             </div>

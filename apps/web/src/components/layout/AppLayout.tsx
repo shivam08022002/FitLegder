@@ -11,7 +11,7 @@ import { RegistrationsNotificationDialog } from './RegistrationsNotificationDial
 import {
   LayoutDashboard, Users, CreditCard, RefreshCw, Clock,
   BarChart3, Settings, LogOut, Dumbbell, ChevronLeft,
-  ChevronRight, Menu, X, FileText, CalendarDays, KeyRound, Shield, Bell
+  ChevronRight, Menu, X, FileText, CalendarDays, KeyRound, Shield, Bell, ClipboardCheck
 } from 'lucide-react';
 
 export default function AppLayout() {
@@ -37,10 +37,12 @@ export default function AppLayout() {
   const currentNavItems = isSuperadmin
     ? [
       { to: '/', icon: Users, label: 'Owners' },
+      { to: '/verification-queue', icon: ClipboardCheck, label: 'Verification Queue' },
+      { to: '/saas-settings', icon: Shield, label: 'SaaS Settings' },
       { to: '/change-password', icon: KeyRound, label: 'Change Password' },
     ]
     : [
-      { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+      { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
       { to: '/events', icon: CalendarDays, label: 'Events' },
       { to: '/members', icon: Users, label: 'Members' },
       { to: '/plans', icon: FileText, label: 'Plans' },
@@ -84,7 +86,7 @@ export default function AppLayout() {
                 alt="FitLedger"
                 className={cn(
                   "object-contain transition-all duration-300",
-                  collapsed ? "h-12 w-12" : "h-11 pl-1"
+                  collapsed ? "h-12 w-12" : "h-13 pl-1"
                 )}
               />
             </Link>
@@ -125,7 +127,55 @@ export default function AppLayout() {
 
         {/* Footer */}
         <div className="border-t border-border p-3 space-y-2">
-          {!collapsed && (
+          {!collapsed && !isSuperadmin && gym && (
+            <Link 
+              to="/subscription" 
+              onClick={() => setMobileOpen(false)} 
+              className="block w-full group focus-visible:outline-none"
+            >
+              <div className="flex flex-col gap-1.5 rounded-xl bg-violet-600/10 hover:bg-violet-600/15 border border-violet-500/20 hover:border-violet-500/40 p-3 transition-all duration-300 text-left shadow-lg shadow-violet-500/5 hover:shadow-violet-500/10">
+                <div className="flex justify-between items-center">
+                  <span className="text-[10px] font-bold text-violet-300 uppercase tracking-widest">SaaS License</span>
+                  <span className={cn(
+                    "text-[9px] font-semibold px-2 py-0.5 rounded-full border",
+                    gym.subscriptionPlan === 'free_trial'
+                      ? (Math.max(0, Math.ceil((new Date(gym.subscriptionExpiresAt).getTime() - Date.now()) / (1000 * 60 * 60 * 24))) === 0
+                        ? "bg-rose-500/20 text-rose-300 border-rose-500/30"
+                        : "bg-violet-500/20 text-violet-300 border-violet-500/30")
+                      : gym.subscriptionStatus === 'pending_approval'
+                        ? "bg-amber-500/20 text-amber-300 border-amber-500/30"
+                        : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                  )}>
+                    {gym.subscriptionPlan === 'free_trial' 
+                      ? 'Free Trial' 
+                      : gym.subscriptionStatus === 'pending_approval' 
+                        ? 'Pending Approval' 
+                        : 'Active'}
+                  </span>
+                </div>
+                <div className="mt-1 flex items-center justify-between gap-2">
+                  <span className="text-sm font-bold text-slate-100 truncate">
+                    {gym.subscriptionPlan === 'free_trial' 
+                      ? (() => {
+                          const expiresAt = gym.subscriptionExpiresAt ? new Date(gym.subscriptionExpiresAt).getTime() : 0;
+                          const days = Math.max(0, Math.ceil((expiresAt - Date.now()) / (1000 * 60 * 60 * 24)));
+                          return days === 0 ? 'Trial Expired' : `${days} Days Left`;
+                        })()
+                      : gym.subscriptionPlan === 'tier1'
+                        ? 'Starter Plan'
+                        : gym.subscriptionPlan === 'tier2'
+                          ? 'Growth Plan'
+                          : 'Enterprise Plan'}
+                  </span>
+                  <span className="text-[11px] bg-violet-600 hover:bg-violet-500 text-white font-bold px-2.5 py-1 rounded-lg transition-colors group-hover:scale-105 transform duration-300 flex items-center shadow-md shadow-violet-600/25 shrink-0">
+                    Upgrade
+                  </span>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {!collapsed && isSuperadmin && (
             <div className="flex items-center gap-3 rounded-lg bg-white/5 px-3 py-2">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-xs font-bold text-white">
                 {user?.name?.charAt(0).toUpperCase() || 'U'}
@@ -139,7 +189,7 @@ export default function AppLayout() {
           <Button
             variant="ghost"
             className={cn(
-              'w-full justify-start gap-3 rounded-xl transition-all duration-300 font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 shadow-sm',
+              'w-full justify-start gap-3 rounded-xl transition-all duration-300 font-semibold text-slate-400 md:hover:text-rose-400 md:hover:bg-rose-500/10 border border-transparent md:hover:border-rose-500/20 shadow-sm',
               collapsed ? 'justify-center px-0' : 'px-3.5 py-2.5'
             )}
             onClick={handleLogout}
@@ -178,9 +228,7 @@ export default function AppLayout() {
                 >
                   <Bell className="h-5 w-5" strokeWidth={1.5} />
                   {pendingCount !== undefined && pendingCount > 0 && (
-                    <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-rose-500 text-[9px] font-bold text-white ring-2 ring-background">
-                      {pendingCount}
-                    </span>
+                    <span className="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-rose-500 ring-1 ring-background" />
                   )}
                 </button>
                 <RegistrationsNotificationDialog open={notiOpen} onOpenChange={setNotiOpen} />
