@@ -19,7 +19,7 @@ const features: Feature[] = [
     desc: 'One-click check-in with no biometric hardware required. Track daily logs, percentages and monthly reports on a clean calendar.',
     points: ['One-click attendance', 'Present / absent history', 'Attendance calendar', 'Monthly reports'],
     tone: 'text-emerald-400 bg-emerald-500/15',
-    className: 'md:col-span-2 md:row-span-2',
+    className: 'sm:col-span-2',
   },
   {
     icon: Users,
@@ -74,30 +74,30 @@ const features: Feature[] = [
 
 export default function Features() {
   return (
-    <section id="features" className="relative mx-auto max-w-7xl px-6 py-24">
-      <div className="mx-auto mb-14 max-w-2xl text-center">
+    <section id="features" className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
+      <div className="mx-auto mb-10 max-w-2xl text-center md:mb-14">
         <span className="section-label">Everything in one place</span>
-        <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl md:text-5xl">
+        <h2 className="mt-3 text-balance text-2xl font-bold sm:text-4xl md:text-5xl">
           The complete toolkit to run your gym
         </h2>
-        <p className="mt-4 text-pretty leading-relaxed text-slate-400">
+        <p className="mt-3 text-pretty text-sm leading-relaxed text-slate-400 sm:mt-4 sm:text-base">
           From front-desk attendance to revenue analytics, FitLedger replaces your notebooks and
           spreadsheets with one intelligent dashboard.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {features.map((f) => (
           <article
             key={f.title}
-            className={`glass-card glow-border group flex flex-col rounded-3xl p-6 ${f.className ?? ''}`}
+            className={`glass-card glow-border group flex flex-col rounded-2xl p-5 sm:rounded-3xl sm:p-6 ${f.className ?? ''}`}
           >
-            <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-2xl ${f.tone}`}>
+            <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl sm:mb-4 sm:h-11 sm:w-11 sm:rounded-2xl ${f.tone}`}>
               <f.icon className="h-5 w-5" strokeWidth={1.75} />
             </div>
-            <h3 className="text-lg font-semibold text-white">{f.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-400">{f.desc}</p>
-            <ul className="mt-4 space-y-2">
+            <h3 className="text-base font-semibold text-white sm:text-lg">{f.title}</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-slate-400 sm:mt-2">{f.desc}</p>
+            <ul className={`mt-3 gap-x-6 gap-y-2 sm:mt-4 ${f.className ? 'grid grid-cols-1 sm:grid-cols-2' : 'flex flex-col'}`}>
               {f.points.map((p) => (
                 <li key={p} className="flex items-center gap-2 text-sm text-slate-300">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />

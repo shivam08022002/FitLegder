@@ -9,8 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/components/ui/use-toast';
-import fitledgerIcon from '@/Assets/fitledger_app_icon.svg';
-import { Loader2, Eye, EyeOff, User, Phone, Dumbbell, Mail, Lock, ShieldCheck } from 'lucide-react';
+import fitledgerLockup from '@/Assets/fitledger_lockup_columnweights.svg';
+import { Loader2, Eye, EyeOff, User, Phone, Dumbbell, Mail, Lock, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -47,14 +47,16 @@ export default function RegisterPage() {
     <div className="relative z-0 flex min-h-screen items-center justify-center p-4 overflow-hidden">
       <div className="auth-bg grid-pattern" />
       <Card className="w-full max-w-[500px] border-white/10 bg-card/60 backdrop-blur-xl animate-scale-in p-2">
-        <CardHeader className="text-center pb-4">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 shadow-[0_0_30px_rgba(139,92,246,0.3)] animate-logo-pulse">
-            <img src={fitledgerIcon} className="h-9 w-9" alt="FitLedger" />
+        <CardHeader className="text-center pb-3">
+          <div className="mx-auto mb-3 flex items-center justify-center">
+            <img src={fitledgerLockup} className="h-14 object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="FitLedger" />
           </div>
-          <CardTitle className="text-2xl font-bold">
-            Create your <span className="gradient-text font-extrabold">FitLedger</span> account
-          </CardTitle>
+          <CardTitle className="text-xl font-bold text-balance">Create your account</CardTitle>
           <CardDescription className="text-slate-400 text-sm mt-1">Start managing your gym in minutes</CardDescription>
+          <div className="mx-auto mt-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-300">
+            <Sparkles className="h-3.5 w-3.5" />
+            30-day free trial &middot; No card required
+          </div>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">

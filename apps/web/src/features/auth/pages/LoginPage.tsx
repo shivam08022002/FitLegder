@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/components/ui/use-toast';
 import fitledgerLockup from '@/Assets/fitledger_lockup_columnweights.svg';
-import { Loader2, Eye, EyeOff, Mail, Lock, ShieldCheck } from 'lucide-react';
+import { Loader2, Eye, EyeOff, Mail, Lock, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -51,10 +51,11 @@ export default function LoginPage() {
     <div className="relative z-0 flex min-h-screen items-center justify-center p-4 overflow-hidden">
       <div className="auth-bg grid-pattern" />
       <Card className="w-full max-w-[420px] border-white/10 bg-card/60 backdrop-blur-xl animate-scale-in p-2">
-        <CardHeader className="text-center pb-4">
-          <div className="mx-auto mb-2.5 flex items-center justify-center">
-            <img src={fitledgerLockup} className="h-11 object-contain" alt="FitLedger" />
+        <CardHeader className="text-center pb-3">
+          <div className="mx-auto mb-3 flex items-center justify-center">
+            <img src={fitledgerLockup} className="h-14 object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="FitLedger" />
           </div>
+          <CardTitle className="text-xl font-bold text-balance">Welcome back</CardTitle>
           <CardDescription className="text-slate-400 text-sm mt-1">Sign in to manage your gym dashboard</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,12 +126,18 @@ export default function LoginPage() {
               )}
             </Button>
             
-            <p className="text-sm text-slate-400 mt-2">
-              Don't have an account?{' '}
-              <Link to="/register" className="text-violet-400 hover:text-violet-300 transition-all font-semibold hover:underline decoration-violet-400 decoration-2 underline-offset-4">
-                Create one
-              </Link>
-            </p>
+            <div className="w-full flex flex-col items-center gap-2 mt-1">
+              <p className="text-sm text-slate-400">
+                Don&apos;t have an account?{' '}
+                <Link to="/register" className="text-violet-400 hover:text-violet-300 transition-all font-semibold hover:underline decoration-violet-400 decoration-2 underline-offset-4">
+                  Create one
+                </Link>
+              </p>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-300">
+                <Sparkles className="h-3 w-3" />
+                Includes a 30-day free trial
+              </span>
+            </div>
             
             <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-4 border-t border-white/5 pt-4 w-full justify-center">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />
