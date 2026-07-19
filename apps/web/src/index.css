@@ -418,6 +418,104 @@ input[type="file"]::file-selector-button {
   }
 }
 
+/* ============================================================
+   Landing page effects
+   ============================================================ */
+
+/* Aurora / glow blobs that slowly drift */
+@keyframes aurora-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(40px, -30px, 0) scale(1.08); }
+  66%      { transform: translate3d(-30px, 25px, 0) scale(0.94); }
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Floating element (dashboard mockup, cards) */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
+
+.float-y { animation: float-y 6s ease-in-out infinite; }
+.float-y-slow { animation: float-y 9s ease-in-out infinite; }
+
+/* Reveal on load */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-up { opacity: 0; animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Marquee for logo strip */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Animated gradient text sweep */
+@keyframes gradient-pan {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.gradient-animate {
+  background-size: 200% auto;
+  animation: gradient-pan 5s linear infinite;
+}
+
+/* Conic border glow for feature/CTA cards */
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(139,92,246,0.5), rgba(79,156,255,0.25), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .glow-border:hover::before { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .float-y,
+  .float-y-slow,
+  .marquee-track,
+  .gradient-animate,
+  .reveal-up {
+    animation: none !important;
+  }
+  .reveal-up { opacity: 1; }
+}
+
 /* Smooth Full-Screen Modal Animation */
 @keyframes fullScreenModalOpen {
   from {

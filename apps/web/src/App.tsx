@@ -1,7 +1,8 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 import { useAuth } from '@/features/auth/context/AuthContext';
-import { ProtectedRoute } from '@/features/auth/components/ProtectedRoute';
 import AppLayout from '@/components/layout/AppLayout';
+import LandingPage from '@/features/landing/pages/LandingPage';
 import LoginPage from '@/features/auth/pages/LoginPage';
 import RegisterPage from '@/features/auth/pages/RegisterPage';
 import ForgotPasswordPage from '@/features/auth/pages/ForgotPasswordPage';
@@ -21,12 +22,42 @@ import EventsPage from '@/features/events/pages/EventsPage';
 import PublicEventPage from '@/features/events/pages/PublicEventPage';
 import EventRegistrationsPage from '@/features/events/pages/EventRegistrationsPage';
 
+function FullScreenLoader() {
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Rendered at "/" (and its nested paths) when the user is NOT authenticated.
+ * The marketing landing page is public; any deeper app path redirects to login.
+ */
+function PublicGate() {
+  const location = useLocation();
+  if (location.pathname === '/') return <LandingPage />;
+  return <Navigate to="/login" replace />;
+}
+
 export default function App() {
   const { user, isAuthenticated, isLoading } = useAuth();
+  const isSuperadmin = user?.role === 'superadmin';
+
+  const rootElement = isLoading ? (
+    <FullScreenLoader />
+  ) : isAuthenticated ? (
+    <AppLayout />
+  ) : (
+    <PublicGate />
+  );
 
   return (
     <Routes>
-      {/* Public Unauthenticated routes */}
+      {/* Public unauthenticated route */}
       <Route path="/e/:id" element={<PublicEventPage />} />
 
       {/* Auth routes */}
@@ -47,31 +78,32 @@ export default function App() {
         element={isAuthenticated && !isLoading ? <Navigate to="/" replace /> : <ResetPasswordPage />}
       />
 
-      {/* Protected routes */}
-      <Route element={<ProtectedRoute />}>
-        <Route element={<AppLayout />}>
-          {user?.role === 'superadmin' ? (
-            <>
-              <Route index element={<SuperadminOwnersPage />} />
-              <Route path="/change-password" element={<ChangePasswordPage />} />
-            </>
-          ) : (
-            <>
-              <Route index element={<DashboardPage />} />
-              <Route path="/members" element={<MembersPage />} />
-              <Route path="/members/:id" element={<MemberDetailPage />} />
-              <Route path="/plans" element={<PlansPage />} />
-              <Route path="/payments" element={<PaymentsPage />} />
-              <Route path="/renewals" element={<RenewalsPage />} />
-              <Route path="/expiry" element={<ExpiryPage />} />
-              <Route path="/reports" element={<ReportsPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/events/:id/registrations" element={<EventRegistrationsPage />} />
-              <Route path="/change-password" element={<ChangePasswordPage />} />
-            </>
-          )}
-        </Route>
+      {/*
+        Root: landing page for guests, authenticated app shell for signed-in users.
+        Nested app routes only render when AppLayout provides an <Outlet />.
+      */}
+      <Route path="/" element={rootElement}>
+        {isSuperadmin ? (
+          <>
+            <Route index element={<SuperadminOwnersPage />} />
+            <Route path="change-password" element={<ChangePasswordPage />} />
+          </>
+        ) : (
+          <>
+            <Route index element={<DashboardPage />} />
+            <Route path="members" element={<MembersPage />} />
+            <Route path="members/:id" element={<MemberDetailPage />} />
+            <Route path="plans" element={<PlansPage />} />
+            <Route path="payments" element={<PaymentsPage />} />
+            <Route path="renewals" element={<RenewalsPage />} />
+            <Route path="expiry" element={<ExpiryPage />} />
+            <Route path="reports" element={<ReportsPage />} />
+            <Route path="settings" element={<SettingsPage />} />
+            <Route path="events" element={<EventsPage />} />
+            <Route path="events/:id/registrations" element={<EventRegistrationsPage />} />
+            <Route path="change-password" element={<ChangePasswordPage />} />
+          </>
+        )}
       </Route>
 
       {/* Catch-all */}
