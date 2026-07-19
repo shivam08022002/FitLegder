@@ -49,9 +49,9 @@ function Nav() {
         scrolled ? 'border-b border-white/5 bg-[#0B0E14]/80 backdrop-blur-xl' : 'border-b border-transparent'
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
         <Link to="/" className="flex items-center">
-          <img src={fitledgerLockup} alt="FitLedger" className="h-8 object-contain" />
+          <img src={fitledgerLockup} alt="FitLedger" className="h-9 object-contain sm:h-10" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -113,27 +113,27 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 pb-16 pt-32 md:pt-40">
-      <div className="grid items-center gap-12 lg:grid-cols-2">
+    <section className="relative mx-auto max-w-7xl px-5 pb-12 pt-24 sm:px-6 sm:pt-28 md:pb-16 md:pt-40">
+      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className="reveal-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
             All-in-one gym management platform
           </span>
 
-          <h1 className="mt-6 text-balance text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
+          <h1 className="mt-5 text-balance text-3xl font-bold leading-[1.05] sm:mt-6 sm:text-5xl md:text-6xl">
             Manage your gym{' '}
             <span className="gradient-text gradient-animate bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
               like a pro
             </span>
           </h1>
 
-          <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-400 sm:text-lg">
+          <p className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-slate-400 sm:mt-5 sm:text-lg">
             Manage members, collect payments, track attendance, monitor renewals and grow your
             fitness business effortlessly — all from one intelligent dashboard.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
             <Button asChild size="lg" className="shadow-lg shadow-violet-500/25">
               <Link to="/register">
                 Start Free Trial
@@ -148,8 +148,8 @@ function Hero() {
             </Button>
           </div>
 
-          <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400">
-            {['No credit card required', '14-day free trial', 'Cancel anytime'].map((t) => (
+          <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400 sm:mt-8">
+            {['No credit card required', '30-day free trial', 'Cancel anytime'].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                 {t}
@@ -188,8 +188,8 @@ function TrustedBy() {
 
 function FinalCta() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
-      <div className="glow-border relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 px-6 py-16 text-center md:py-20">
+    <section className="relative mx-auto max-w-7xl px-5 py-16 sm:px-6 md:py-24">
+      <div className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 px-5 py-12 text-center sm:rounded-[32px] sm:px-6 sm:py-16 md:py-20">
         <div className="aurora-blob left-1/2 top-0 h-72 w-72 -translate-x-1/2 bg-violet-500/25" />
         <div className="relative">
           <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold sm:text-4xl md:text-5xl">
@@ -212,7 +212,7 @@ function FinalCta() {
           </div>
 
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-300">
-            {['Free trial', 'Setup in minutes', 'No credit card required'].map((t) => (
+            {['30-day free trial', 'Setup in minutes', 'No credit card required'].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                 {t}
@@ -233,10 +233,10 @@ function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-white/5 px-6 py-14">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 md:grid-cols-5">
+    <footer className="relative border-t border-white/5 px-5 py-12 sm:px-6 sm:py-14">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 sm:gap-10 md:grid-cols-5">
         <div className="col-span-2">
-          <img src={fitledgerLockup} alt="FitLedger" className="h-8 object-contain" />
+          <img src={fitledgerLockup} alt="FitLedger" className="h-10 object-contain" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
             The all-in-one platform to manage members, payments, attendance and renewals for your
             fitness business.
