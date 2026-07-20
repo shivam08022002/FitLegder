@@ -10,46 +10,52 @@ import { formatDate, formatMoney, getMembershipStatus, getStatusLabel, cn } from
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
+import { toast } from '@/components/ui/use-toast';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { toast } from '@/components/ui/use-toast';
 import {
   UserPlus, Search, Loader2, Phone,
   Mail, Calendar, Trash2, Edit, Eye, Dumbbell, ChevronRight,
-  UserCheck, CheckCheck, User, MapPin, CreditCard
+  UserCheck, CheckCheck, User, MapPin, CreditCard, Sun, Moon
 } from 'lucide-react';
 
 export default function MembersPage() {
   const { gym, user } = useAuth();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [showAddDialog, setShowAddDialog] = useState(searchParams.get('action') === 'add');
   const [editMember, setEditMember] = useState<any>(null);
   const [markingMember, setMarkingMember] = useState<any>(null);
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const [page, setPage] = useState(1);
+  const [activeTab, setActiveTab] = useState<'all' | 'morning' | 'evening'>('all');
 
   const { data, isLoading } = useQuery({
-    queryKey: ['members', search, page],
+    queryKey: ['members', search, page, activeTab],
     queryFn: async () => {
       const res = await api.get('/members', {
-        params: { search: search || undefined, page, limit: 20 },
+        params: { 
+          search: search || undefined, 
+          page, 
+          limit: 20,
+          batch: activeTab !== 'all' ? activeTab : undefined
+        },
       });
       return res.data;
     },
   });
 
-  // Fetch the set of memberIds already marked present today (single call, not per-member)
+  // Fetch the set of memberIds already marked present today
   const { data: todayData } = useQuery({
     queryKey: ['attendance-today'],
     queryFn: async () => {
       const res = await api.get('/members/attendance/today-summary');
       return new Set<string>(res.data.data as string[]);
     },
-    staleTime: 60 * 1000, // 1 min — refresh is triggered by invalidation on mark
+    staleTime: 60 * 1000,
   });
   const markedToday = todayData ?? new Set<string>();
 
@@ -120,15 +126,53 @@ export default function MembersPage() {
         </Button>
       </div>
 
-      {/* Toolbar / Search */}
-      <div className="relative max-w-md">
-        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" strokeWidth={1.5} />
-        <Input
-          placeholder="Search by name, phone, or email..."
-          value={search}
-          onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-          className="pl-10"
-        />
+      {/* Tabs and Search Bar */}
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
+        <div className="flex bg-slate-900/60 backdrop-blur-md border border-white/5 p-1 rounded-xl w-full md:w-auto overflow-x-auto shrink-0">
+          <button
+            onClick={() => { setActiveTab('all'); setPage(1); }}
+            className={cn(
+              "rounded-lg px-4 py-2 text-xs font-semibold transition-all duration-300",
+              activeTab === 'all'
+                ? "bg-violet-600 text-white shadow-md shadow-violet-600/10"
+                : "text-slate-400 hover:text-slate-200"
+            )}
+          >
+            All Members
+          </button>
+          <button
+            onClick={() => { setActiveTab('morning'); setPage(1); }}
+            className={cn(
+              "rounded-lg px-4 py-2 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300",
+              activeTab === 'morning'
+                ? "bg-violet-600 text-white shadow-md shadow-violet-600/10"
+                : "text-slate-400 hover:text-slate-200"
+            )}
+          >
+            <Sun className="h-3.5 w-3.5" /> Morning
+          </button>
+          <button
+            onClick={() => { setActiveTab('evening'); setPage(1); }}
+            className={cn(
+              "rounded-lg px-4 py-2 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300",
+              activeTab === 'evening'
+                ? "bg-violet-600 text-white shadow-md shadow-violet-600/10"
+                : "text-slate-400 hover:text-slate-200"
+            )}
+          >
+            <Moon className="h-3.5 w-3.5" /> Evening
+          </button>
+        </div>
+
+        <div className="relative w-full md:max-w-md">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" strokeWidth={1.5} />
+          <Input
+            placeholder="Search by name, phone, or email..."
+            value={search}
+            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+            className="pl-10"
+          />
+        </div>
       </div>
 
       {/* Member List */}
@@ -151,6 +195,7 @@ export default function MembersPage() {
         <div className="space-y-3">
           {members.map((member: any) => {
             const status = member.membershipStatus || getMembershipStatus(member.latestMembership?.endDate);
+            const isMorning = member.batch === 'morning';
             return (
               <Card 
                 key={member._id} 
@@ -158,14 +203,23 @@ export default function MembersPage() {
               >
                 <CardContent className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-3 sm:gap-4 min-w-0 w-full sm:w-auto">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-sm font-bold text-white shadow-md">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-sm font-bold text-white shadow-md relative">
                       {member.fullName?.charAt(0).toUpperCase()}
+                      <span className={cn(
+                        "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border border-slate-950 text-[10px] text-white shadow-md",
+                        isMorning ? "bg-amber-500" : "bg-indigo-500"
+                      )}>
+                        {isMorning ? <Sun className="h-2.5 w-2.5" /> : <Moon className="h-2.5 w-2.5" />}
+                      </span>
                     </div>
                     
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
                         <p className="font-semibold text-slate-200 truncate">{member.fullName}</p>
                         <Badge variant={status as any} className="text-[10px] px-2 py-0.5 rounded-full">{getStatusLabel(status)}</Badge>
+                        <Badge variant="secondary" className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border-white/10 gap-1 capitalize">
+                          {isMorning ? '🌅 Morning' : '🌙 Evening'}
+                        </Badge>
                       </div>
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 mt-1">
                         <span className="flex items-center gap-1"><Phone className="h-3.5 w-3.5 text-violet-400" strokeWidth={1.5} /> {member.phone}</span>
@@ -429,12 +483,14 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
       email: member.email || '',
       address: member.address || '',
       gender: member.gender,
+      batch: member.batch || 'morning',
       dateOfBirth: member.dateOfBirth ? new Date(member.dateOfBirth).toISOString().split('T')[0] : '',
       joiningDate: member.joiningDate ? new Date(member.joiningDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
       notes: member.notes || '',
     } : {
       joiningDate: new Date().toISOString().split('T')[0],
       gender: 'male' as const,
+      batch: 'morning' as const,
       paymentMethod: 'cash' as const,
     },
   });
@@ -447,6 +503,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
         email: member.email || '',
         address: member.address || '',
         gender: member.gender,
+        batch: member.batch || 'morning',
         dateOfBirth: member.dateOfBirth ? new Date(member.dateOfBirth).toISOString().split('T')[0] : '',
         joiningDate: member.joiningDate ? new Date(member.joiningDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
         notes: member.notes || '',
@@ -458,6 +515,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
         email: '',
         address: '',
         gender: 'male' as const,
+        batch: 'morning' as const,
         dateOfBirth: '',
         joiningDate: new Date().toISOString().split('T')[0],
         notes: '',
@@ -535,6 +593,16 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
                 </select>
                 {errors.gender && <p className="text-xs text-red-400">{errors.gender.message}</p>}
               </div>
+            </div>
+
+            {/* Morning/Evening batch selection */}
+            <div className="space-y-1.5">
+              <Label className="text-xs font-semibold text-slate-400">Batch / Timing *</Label>
+              <select {...register('batch')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
+                <option value="morning">🌅 Morning Batch</option>
+                <option value="evening">🌙 Evening Batch</option>
+              </select>
+              {errors.batch && <p className="text-xs text-red-400">{errors.batch.message}</p>}
             </div>
           </div>
 

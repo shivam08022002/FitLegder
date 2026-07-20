@@ -7,6 +7,7 @@ export interface IMemberDocument extends Document {
   email?: string;
   address?: string;
   gender: 'male' | 'female' | 'other';
+  batch: 'morning' | 'evening';
   dateOfBirth?: Date;
   joiningDate: Date;
   emergencyContact?: {
@@ -47,6 +48,12 @@ const memberSchema = new Schema<IMemberDocument>(
       type: String,
       enum: ['male', 'female', 'other'],
       required: [true, 'Gender is required'],
+    },
+    batch: {
+      type: String,
+      enum: ['morning', 'evening'],
+      required: [true, 'Batch is required'],
+      default: 'morning',
     },
     dateOfBirth: Date,
     joiningDate: {

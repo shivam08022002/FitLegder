@@ -13,6 +13,9 @@ export const createMemberSchema = z.object({
   gender: z.enum(['male', 'female', 'other'], {
     required_error: 'Gender is required',
   }),
+  batch: z.enum(['morning', 'evening'], {
+    required_error: 'Batch is required',
+  }),
   dateOfBirth: z.string().optional().or(z.literal('')),
   joiningDate: z.string().min(1, 'Joining date is required'),
   emergencyContact: emergencyContactSchema.optional(),
@@ -26,3 +29,4 @@ export const updateMemberSchema = createMemberSchema.partial();
 
 export type CreateMemberInput = z.infer<typeof createMemberSchema>;
 export type UpdateMemberInput = z.infer<typeof updateMemberSchema>;
+

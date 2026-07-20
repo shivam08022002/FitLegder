@@ -21,8 +21,8 @@ export async function getPayments(req: AuthRequest, res: Response, next: NextFun
       memberId: req.query.memberId,
       page: parseInt(req.query.page as string) || 1,
       limit: parseInt(req.query.limit as string) || 20,
-      from: req.query.from,
-      to: req.query.to,
+      search: req.query.search,
+      sortBy: req.query.sortBy,
     });
     res.status(200).json({
       success: true,

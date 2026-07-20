@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { toast } from '@/components/ui/use-toast';
-import { CreditCard, Plus, Loader2, ArrowRight } from 'lucide-react';
+import { CreditCard, Plus, Loader2, ArrowRight, Search, Filter, X, AlertTriangle, CheckCircle2 } from 'lucide-react';
 
 export default function PaymentsPage() {
   const { gym } = useAuth();
@@ -19,10 +19,16 @@ export default function PaymentsPage() {
   const [showRecordDialog, setShowRecordDialog] = useState(searchParams.get('action') === 'record');
   const [page, setPage] = useState(1);
 
+  // Filter & Sort state
+  const [search, setSearch] = useState('');
+  const [sortBy, setSortBy] = useState('newest');
+
   const { data, isLoading } = useQuery({
-    queryKey: ['payments', page],
+    queryKey: ['payments', page, search, sortBy],
     queryFn: async () => {
-      const res = await api.get('/payments', { params: { page, limit: 20 } });
+      const params: any = { page, limit: 20, sortBy };
+      if (search) params.search = search;
+      const res = await api.get('/payments', { params });
       return res.data;
     },
   });
@@ -72,6 +78,34 @@ export default function PaymentsPage() {
         </Button>
       </div>
 
+      {/* Search and Sort Toolbar */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        {/* Search */}
+        <div className="relative flex-1 max-w-md">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" strokeWidth={1.5} />
+          <Input
+            placeholder="Search by member name..."
+            value={search}
+            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+            className="pl-10 h-10 rounded-xl"
+          />
+        </div>
+
+        {/* Sort select */}
+        <div className="relative w-full sm:w-48 shrink-0">
+          <select
+            value={sortBy}
+            onChange={(e) => { setSortBy(e.target.value); setPage(1); }}
+            className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50"
+          >
+            <option value="newest">📅 Newest First</option>
+            <option value="oldest">📅 Oldest First</option>
+            <option value="a-z">🔤 A to Z</option>
+            <option value="dues">⚠️ Dues First</option>
+          </select>
+        </div>
+      </div>
+
       {isLoading ? (
         <div className="flex justify-center py-20">
           <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
@@ -80,44 +114,83 @@ export default function PaymentsPage() {
         <Card className="border-white/5 bg-white/[0.03]">
           <CardContent className="flex flex-col items-center py-16 text-center">
             <CreditCard className="h-12 w-12 text-slate-500 mb-4" strokeWidth={1.5} />
-            <p className="text-lg font-medium text-slate-200">No payments yet · First one coming soon?</p>
-            <p className="text-sm text-slate-400 mb-6">Log manual membership cash or online collections</p>
-            <Button onClick={() => setShowRecordDialog(true)} className="gap-2">
-              <Plus className="h-4 w-4" strokeWidth={1.5} /> Record Payment
-            </Button>
+            <p className="text-lg font-medium text-slate-200">
+              {search ? 'No payments match your search' : 'No payments yet · First one coming soon?'}
+            </p>
+            <p className="text-sm text-slate-400 mb-6">
+              {search ? 'Try adjusting your search query' : 'Log manual membership cash or online collections'}
+            </p>
+            {search ? (
+              <Button onClick={() => setSearch('')} variant="outline" className="gap-2 rounded-xl">
+                <X className="h-4 w-4" strokeWidth={1.5} /> Clear Search
+              </Button>
+            ) : (
+              <Button onClick={() => setShowRecordDialog(true)} className="gap-2">
+                <Plus className="h-4 w-4" strokeWidth={1.5} /> Record Payment
+              </Button>
+            )}
           </CardContent>
         </Card>
       ) : (
         <div className="space-y-3">
-          {payments.map((p: any) => (
-            <Card key={p._id} className="overflow-hidden border-white/[0.06] bg-[rgba(15,23,42,0.5)] backdrop-blur-xl hover:translate-x-1 duration-300">
-              <CardContent className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                    <CreditCard className="h-5 w-5" strokeWidth={1.5} />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-semibold text-slate-200 truncate">{p.member?.fullName || 'Unknown'}</p>
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-400 mt-1">
-                      <span>{formatDate(p.paymentDate, gym?.timezone)}</span>
-                      <span className="hidden sm:inline">·</span>
-                      <span className="uppercase font-semibold text-[10px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-300">{p.method}</span>
-                      {p.membership?.plan?.name && (
-                        <>
-                          <span className="hidden sm:inline">·</span>
-                          <span className="text-violet-400 font-medium">{p.membership.plan.name}</span>
-                        </>
-                      )}
+          {payments.map((p: any) => {
+            const hasDue = p.balanceDue > 0;
+            return (
+              <Card key={p._id} className="overflow-hidden border-white/[0.06] bg-[rgba(15,23,42,0.5)] backdrop-blur-xl hover:translate-x-1 duration-300">
+                <CardContent className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                      <CreditCard className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-semibold text-slate-200 truncate">{p.member?.fullName || 'Unknown'}</p>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-400 mt-1">
+                        <span>{formatDate(p.paymentDate, gym?.timezone)}</span>
+                        <span className="hidden sm:inline">·</span>
+                        <span className="uppercase font-semibold text-[10px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-300">{p.method}</span>
+                        {p.membership?.plan?.name && (
+                          <>
+                            <span className="hidden sm:inline">·</span>
+                            <span className="text-violet-400 font-medium">{p.membership.plan.name}</span>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex sm:block justify-between items-center w-full sm:w-auto border-t sm:border-t-0 pt-2.5 sm:pt-0 border-white/5 shrink-0">
-                  <span className="text-xs text-slate-500 sm:hidden">Amount Paid:</span>
-                  <span className="text-base sm:text-lg font-bold text-emerald-400">+{formatMoney(p.amount, gym?.currency)}</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                  {/* Amount Paid + Due Amount */}
+                  <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto border-t sm:border-t-0 pt-2.5 sm:pt-0 border-white/5 shrink-0 justify-between sm:justify-end">
+                    {/* Due Amount */}
+                    <div className="flex flex-col items-start sm:items-end">
+                      <span className="text-[10px] uppercase tracking-wider text-slate-500 font-medium">Due</span>
+                      <span className={cn(
+                        "text-sm font-bold flex items-center gap-1",
+                        hasDue ? "text-amber-400" : "text-emerald-400/70"
+                      )}>
+                        {hasDue ? (
+                          <>
+                            <AlertTriangle className="h-3 w-3" strokeWidth={2} />
+                            {formatMoney(p.balanceDue, gym?.currency)}
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle2 className="h-3 w-3" strokeWidth={2} />
+                            Paid
+                          </>
+                        )}
+                      </span>
+                    </div>
+
+                    {/* Amount Paid */}
+                    <div className="flex flex-col items-end">
+                      <span className="text-[10px] uppercase tracking-wider text-slate-500 font-medium sm:hidden">Paid</span>
+                      <span className="text-base sm:text-lg font-bold text-emerald-400">+{formatMoney(p.amount, gym?.currency)}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
           
           {pagination.totalPages > 1 && (
             <div className="flex items-center justify-center gap-2 pt-4">

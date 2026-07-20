@@ -8,6 +8,7 @@ export async function getMembers(req: AuthRequest, res: Response, next: NextFunc
       gymId: req.gymId!,
       search: req.query.search as string,
       plan: req.query.plan as string,
+      batch: req.query.batch as string,
       joiningFrom: req.query.joiningFrom as string,
       joiningTo: req.query.joiningTo as string,
       expiryFrom: req.query.expiryFrom as string,

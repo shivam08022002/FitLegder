@@ -59,33 +59,122 @@ export async function recordPayment(data: any, gymId: string) {
   return { payment, membership };
 }
 
-export async function getPayments(gymId: string, query: any) {
-  const { memberId, page = 1, limit = 20, from, to } = query;
+export async function getPayments(gymId: string, query: any): Promise<{
+  payments: any[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}> {
+  const { memberId, page = 1, limit = 20, search, sortBy = 'newest' } = query;
   const skip = (page - 1) * limit;
   const filter: any = { gym: new mongoose.Types.ObjectId(gymId) };
 
   if (memberId) filter.member = new mongoose.Types.ObjectId(memberId);
-  if (from || to) {
-    filter.paymentDate = {};
-    if (from) filter.paymentDate.$gte = new Date(from);
-    if (to) filter.paymentDate.$lte = new Date(to);
+
+  // If search is provided, first find matching member IDs
+  if (search) {
+    const matchingMembers = await Member.find(
+      {
+        gym: new mongoose.Types.ObjectId(gymId),
+        $or: [
+          { fullName: { $regex: search, $options: 'i' } },
+          { phone: { $regex: search, $options: 'i' } },
+        ],
+      },
+      '_id'
+    );
+    filter.member = { $in: matchingMembers.map((m) => m._id) };
   }
 
-  const [payments, total] = await Promise.all([
-    Payment.find(filter)
-      .sort({ paymentDate: -1 })
-      .skip(skip)
-      .limit(limit)
-      .populate('member', 'fullName phone')
-      .populate({
-        path: 'membership',
-        populate: { path: 'plan', select: 'name price durationInDays' },
-      }),
-    Payment.countDocuments(filter),
-  ]);
+  // Base aggregation pipeline
+  const pipeline: any[] = [
+    { $match: filter },
+    // Lookup member
+    {
+      $lookup: {
+        from: 'members',
+        localField: 'member',
+        foreignField: '_id',
+        as: 'member',
+      },
+    },
+    { $unwind: { path: '$member', preserveNullAndEmptyArrays: true } },
+    // Lookup membership
+    {
+      $lookup: {
+        from: 'memberships',
+        localField: 'membership',
+        foreignField: '_id',
+        as: 'membership',
+      },
+    },
+    { $unwind: { path: '$membership', preserveNullAndEmptyArrays: true } },
+    // Lookup plan details
+    {
+      $lookup: {
+        from: 'membershipplans',
+        localField: 'membership.plan',
+        foreignField: '_id',
+        as: 'membership.plan',
+      },
+    },
+    { $unwind: { path: '$membership.plan', preserveNullAndEmptyArrays: true } },
+    // Lookup total payments for this membership to calculate balance due
+    {
+      $lookup: {
+        from: 'payments',
+        let: { mId: '$membership._id' },
+        pipeline: [
+          { $match: { $expr: { $eq: ['$membership', '$$mId'] } } },
+          { $group: { _id: null, totalPaid: { $sum: '$amount' } } },
+        ],
+        as: 'paymentsSum',
+      },
+    },
+    {
+      $addFields: {
+        balanceDue: {
+          $max: [
+            0,
+            {
+              $subtract: [
+                { $ifNull: ['$membership.plan.price', 0] },
+                { $ifNull: [{ $arrayElemAt: ['$paymentsSum.totalPaid', 0] }, 0] },
+              ],
+            },
+          ],
+        },
+      },
+    },
+    { $project: { paymentsSum: 0 } },
+  ];
+
+  // Sorting
+  let sortStage: any = { paymentDate: -1 };
+  if (sortBy === 'oldest') {
+    sortStage = { paymentDate: 1 };
+  } else if (sortBy === 'a-z') {
+    sortStage = { 'member.fullName': 1 };
+  } else if (sortBy === 'dues') {
+    sortStage = { balanceDue: -1, paymentDate: -1 };
+  }
+  pipeline.push({ $sort: sortStage });
+
+  // Get total count before pagination
+  const countPipeline = [...pipeline, { $count: 'total' }];
+  const countResult = await Payment.aggregate(countPipeline);
+  const total = countResult[0]?.total || 0;
+
+  // Add pagination stages
+  pipeline.push({ $skip: skip }, { $limit: limit });
+
+  const enrichedPayments = await Payment.aggregate(pipeline);
 
   return {
-    payments,
+    payments: enrichedPayments,
     pagination: {
       page,
       limit,

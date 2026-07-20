@@ -9,6 +9,7 @@ interface MemberQuery {
   gymId: string;
   search?: string;
   plan?: string;
+  batch?: string;
   joiningFrom?: string;
   joiningTo?: string;
   expiryFrom?: string;
@@ -23,6 +24,7 @@ export async function getMembers(query: MemberQuery) {
     gymId,
     search,
     plan,
+    batch,
     joiningFrom,
     joiningTo,
     expiryFrom,
@@ -44,6 +46,10 @@ export async function getMembers(query: MemberQuery) {
       { phone: { $regex: search, $options: 'i' } },
       { email: { $regex: search, $options: 'i' } },
     ];
+  }
+
+  if (batch && (batch === 'morning' || batch === 'evening')) {
+    matchStage.batch = batch;
   }
 
   if (joiningFrom || joiningTo) {
