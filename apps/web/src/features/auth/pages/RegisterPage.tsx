@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from '@/components/ui/use-toast';
-import fitledgerLockup from '@/Assets/fitledger_lockup_columnweights.svg';
+import gymLogo from '@/Assets/gymlogo2.png';
 import { Loader2, Eye, EyeOff, User, Phone, Dumbbell, Mail, Lock, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function RegisterPage() {
@@ -54,7 +54,7 @@ export default function RegisterPage() {
       <Card className="w-full max-w-[440px] border-white/[0.08] bg-[#050508]/40 shadow-[0_0_50px_-12px_rgba(139,92,246,0.25)] backdrop-blur-2xl animate-scale-in p-1 sm:p-2">
         <CardHeader className="text-center pb-2 pt-4 px-4 sm:px-6">
           <div className="mx-auto mb-2 flex items-center justify-center">
-            <img src={fitledgerLockup} className="h-12 object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="GymArchive" />
+            <img src={gymLogo} className="h-14 w-auto object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="GymArchive" />
           </div>
           <CardTitle className="text-lg font-bold text-balance">Create your account</CardTitle>
           <CardDescription className="text-slate-400 text-xs mt-0.5">Start managing your gym in minutes</CardDescription>

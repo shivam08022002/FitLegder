@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import fitledgerLockup from '@/Assets/fitledger_lockup_columnweights.svg';
+import gymLogo from '@/Assets/gymlogo2.png';
 import { ArrowRight, PlayCircle, Menu, X, CheckCircle2 } from 'lucide-react';
 import DashboardMockup from '../components/DashboardMockup';
 import Features from '../components/Features';
@@ -51,7 +51,7 @@ function Nav() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
         <Link to="/" className="flex items-center">
-          <img src={fitledgerLockup} alt="GymArchive" className="h-11 object-contain sm:h-12" />
+          <img src={gymLogo} alt="GymArchive" className="h-10 w-auto object-contain sm:h-12" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -236,7 +236,7 @@ function Footer() {
     <footer className="relative border-t border-white/5 px-5 py-8 sm:px-6 sm:py-10">
       <div className="mx-auto flex flex-col gap-8 md:flex-row md:justify-between max-w-7xl">
         <div className="max-w-sm">
-          <img src={fitledgerLockup} alt="GymArchive" className="h-12 object-contain" />
+          <img src={gymLogo} alt="GymArchive" className="h-12 w-auto object-contain" />
           <p className="mt-4 text-sm leading-relaxed text-slate-400">
             The all-in-one platform to manage members, payments, attendance and renewals for your
             fitness business.

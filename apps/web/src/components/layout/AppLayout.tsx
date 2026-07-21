@@ -4,7 +4,7 @@ import { useAuth } from '@/features/auth/context/AuthContext';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { GymProfileModal } from './GymProfileModal';
-import fitledgerLockup from '@/Assets/fitledger_lockup_columnweights.svg';
+import gymLogo from '@/Assets/gymlogo2.png';
 import { useQuery } from '@tanstack/react-query';
 import api from '@/lib/api';
 import { RegistrationsNotificationDialog } from './RegistrationsNotificationDialog';
@@ -82,11 +82,11 @@ export default function AppLayout() {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center min-w-0 cursor-pointer">
               <img
-                src={fitledgerLockup}
+                src={gymLogo}
                 alt="GymArchive"
                 className={cn(
                   "object-contain transition-all duration-300",
-                  collapsed ? "h-12 w-12" : "h-13 pl-1"
+                  collapsed ? "h-10 w-auto max-w-[50px]" : "h-12 w-auto max-h-14"
                 )}
               />
             </Link>
@@ -214,8 +214,8 @@ export default function AppLayout() {
             <button onClick={() => setMobileOpen(true)} className="text-muted-foreground hover:text-foreground lg:hidden">
               <Menu className="h-6 w-6" />
             </button>
-            <Link to="/" className="flex items-center lg:hidden cursor-pointer">
-              <img src={fitledgerLockup} alt="GymArchive" className="h-12 object-contain" />
+            <Link to="/" className="flex items-center lg:hidden cursor-pointer pl-2">
+              <img src={gymLogo} alt="GymArchive" className="h-10 w-auto object-contain" />
             </Link>
           </div>
 
