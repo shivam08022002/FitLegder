@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { updateGymSchema, type UpdateGymInput } from '@gym-saas/validation';
+import { updateGymSchema, type UpdateGymInput } from '@/validation';
 import { useAuth } from '@/features/auth/context/AuthContext';
 import api from '@/lib/api';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';

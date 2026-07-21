@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import type { IUser, IGym } from '@gym-saas/types';
+import type { IUser, IGym } from '@/types';
 import api, { setAccessToken } from '@/lib/api';
 
 interface AuthState {

@@ -11,7 +11,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { toast } from '@/components/ui/use-toast';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { eventRegistrationSchema, EventRegistrationInput } from '@gym-saas/validation';
+import { eventRegistrationSchema, EventRegistrationInput } from '@/validation';
 
 export default function PublicEventPage() {
   const { id } = useParams();

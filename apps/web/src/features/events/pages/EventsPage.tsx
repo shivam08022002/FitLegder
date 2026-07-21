@@ -16,7 +16,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { toast } from '@/components/ui/use-toast';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createEventSchema, CreateEventInput } from '@gym-saas/validation';
+import { createEventSchema, CreateEventInput } from '@/validation';
 
 export default function EventsPage() {
   // Rebundle trigger comment

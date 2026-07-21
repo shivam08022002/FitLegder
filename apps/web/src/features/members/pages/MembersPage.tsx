@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createMemberSchema, type CreateMemberInput } from '@gym-saas/validation';
+import { createMemberSchema, type CreateMemberInput } from '@/validation';
 import { useAuth } from '@/features/auth/context/AuthContext';
 import api from '@/lib/api';
 import { formatDate, formatMoney, getMembershipStatus, getStatusLabel, cn } from '@/lib/utils';

@@ -10,8 +10,6 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@gym-saas/types": "workspace:*",
-    "@gym-saas/validation": "workspace:*",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.0",
