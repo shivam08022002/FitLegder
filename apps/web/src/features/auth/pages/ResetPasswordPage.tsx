@@ -83,7 +83,7 @@ export default function ResetPasswordPage() {
       <Card className="w-full max-w-[420px] border-white/10 bg-card/60 backdrop-blur-xl animate-scale-in p-2">
         <CardHeader className="text-center pb-4">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 shadow-[0_0_30px_rgba(139,92,246,0.3)] animate-logo-pulse">
-            <img src={fitledgerIcon} className="h-9 w-9" alt="FitLedger" />
+            <img src={fitledgerIcon} className="h-9 w-9" alt="GymArchive" />
           </div>
           <CardTitle className="text-2xl font-bold">
             Create New Password

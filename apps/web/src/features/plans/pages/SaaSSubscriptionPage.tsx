@@ -75,7 +75,7 @@ export default function SaaSSubscriptionPage() {
     <div className="space-y-6 max-w-5xl page-enter stagger-children">
       <div>
         <h1 className="text-2xl font-bold">Subscription & Billing</h1>
-        <p className="text-sm text-slate-400 font-medium">Manage your FitLedger SaaS subscription and billing preferences</p>
+        <p className="text-sm text-slate-400 font-medium">Manage your GymArchive SaaS subscription and billing preferences</p>
       </div>
 
       {/* Expiry Warning Banner */}
@@ -86,7 +86,7 @@ export default function SaaSSubscriptionPage() {
             <div>
               <h4 className="font-bold text-rose-300">Your Free Trial Has Expired</h4>
               <p className="text-xs text-rose-400/90 leading-relaxed mt-1">
-                Your 30-day trial of FitLedger has expired. Please select a plan below to upgrade and keep uninterrupted access. Your data remains safe and saved.
+                Your 30-day trial of GymArchive has expired. Please select a plan below to upgrade and keep uninterrupted access. Your data remains safe and saved.
               </p>
             </div>
           </CardContent>

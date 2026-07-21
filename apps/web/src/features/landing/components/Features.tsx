@@ -81,7 +81,7 @@ export default function Features() {
           The complete toolkit to run your gym
         </h2>
         <p className="mt-3 text-pretty text-sm leading-relaxed text-slate-400 sm:mt-4 sm:text-base">
-          From front-desk attendance to revenue analytics, FitLedger replaces your notebooks and
+          From front-desk attendance to revenue analytics, GymArchive replaces your notebooks and
           spreadsheets with one intelligent dashboard.
         </p>
       </div>

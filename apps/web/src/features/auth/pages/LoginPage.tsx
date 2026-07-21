@@ -58,7 +58,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-[420px] border-white/[0.08] bg-[#050508]/40 shadow-[0_0_50px_-12px_rgba(139,92,246,0.25)] backdrop-blur-2xl animate-scale-in p-2">
         <CardHeader className="text-center pb-3">
           <div className="mx-auto mb-3 flex items-center justify-center">
-            <img src={fitledgerLockup} className="h-16 object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="FitLedger" />
+            <img src={fitledgerLockup} className="h-16 object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="GymArchive" />
           </div>
           <CardTitle className="text-xl font-bold text-balance">Welcome back</CardTitle>
           <CardDescription className="text-slate-400 text-sm mt-1">Sign in to manage your gym dashboard</CardDescription>

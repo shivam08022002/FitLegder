@@ -51,7 +51,7 @@ function Nav() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
         <Link to="/" className="flex items-center">
-          <img src={fitledgerLockup} alt="FitLedger" className="h-11 object-contain sm:h-12" />
+          <img src={fitledgerLockup} alt="GymArchive" className="h-11 object-contain sm:h-12" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -196,7 +196,7 @@ function FinalCta() {
             Ready to transform your gym management?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-pretty leading-relaxed text-slate-300">
-            Join thousands of gym owners who run their business smarter with FitLedger.
+            Join thousands of gym owners who run their business smarter with GymArchive.
           </p>
 
           <div className="mt-5 flex flex-row justify-center gap-3">
@@ -236,7 +236,7 @@ function Footer() {
     <footer className="relative border-t border-white/5 px-5 py-8 sm:px-6 sm:py-10">
       <div className="mx-auto flex flex-col gap-8 md:flex-row md:justify-between max-w-7xl">
         <div className="max-w-sm">
-          <img src={fitledgerLockup} alt="FitLedger" className="h-12 object-contain" />
+          <img src={fitledgerLockup} alt="GymArchive" className="h-12 object-contain" />
           <p className="mt-4 text-sm leading-relaxed text-slate-400">
             The all-in-one platform to manage members, payments, attendance and renewals for your
             fitness business.
@@ -260,7 +260,7 @@ function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-4 sm:flex-row">
-        <p className="text-xs text-slate-500">© {new Date().getFullYear()} FitLedger. All rights reserved.</p>
+        <p className="text-xs text-slate-500">© {new Date().getFullYear()} GymArchive. All rights reserved.</p>
         <div className="flex items-center gap-4 text-xs text-slate-500">
           <Link to="/login" className="transition-colors hover:text-slate-300">Sign In</Link>
           <Link to="/register" className="transition-colors hover:text-slate-300">Create account</Link>

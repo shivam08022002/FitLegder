@@ -412,7 +412,7 @@ export default function DashboardPage() {
           <DialogHeader className="border-b border-white/5 pb-4 shrink-0">
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-violet-400" />
-              <DialogTitle className="text-xl font-bold text-white">How FitLedger Works</DialogTitle>
+              <DialogTitle className="text-xl font-bold text-white">How GymArchive Works</DialogTitle>
             </div>
             <DialogDescription className="text-slate-400 text-sm">
               An overview guide on using every page in your gym SaaS dashboard.

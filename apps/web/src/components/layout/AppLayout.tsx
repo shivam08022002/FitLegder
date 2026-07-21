@@ -83,7 +83,7 @@ export default function AppLayout() {
             <Link to="/" className="flex items-center min-w-0 cursor-pointer">
               <img
                 src={fitledgerLockup}
-                alt="FitLedger"
+                alt="GymArchive"
                 className={cn(
                   "object-contain transition-all duration-300",
                   collapsed ? "h-12 w-12" : "h-13 pl-1"
@@ -215,7 +215,7 @@ export default function AppLayout() {
               <Menu className="h-6 w-6" />
             </button>
             <Link to="/" className="flex items-center lg:hidden cursor-pointer">
-              <img src={fitledgerLockup} alt="FitLedger" className="h-12 object-contain" />
+              <img src={fitledgerLockup} alt="GymArchive" className="h-12 object-contain" />
             </Link>
           </div>
 

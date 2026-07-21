@@ -3,7 +3,7 @@ import { Star } from 'lucide-react';
 const testimonials = [
   {
     quote:
-      'FitLedger replaced three notebooks and a messy spreadsheet. Marking attendance takes seconds and I finally know my real monthly revenue.',
+      'GymArchive replaced three notebooks and a messy spreadsheet. Marking attendance takes seconds and I finally know my real monthly revenue.',
     name: 'Arjun Mehta',
     role: 'Owner, IronForge Gym',
     initial: 'A',

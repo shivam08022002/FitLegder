@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 const faqs = [
   {
     q: 'Can I use it without a biometric device?',
-    a: 'Absolutely. FitLedger is built around a manual, one-click attendance system — no biometric or hardware required. Your front desk can mark members present in seconds.',
+    a: 'Absolutely. GymArchive is built around a manual, one-click attendance system — no biometric or hardware required. Your front desk can mark members present in seconds.',
   },
   {
     q: 'Can I track attendance manually?',
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: 'Is my data secure?',
-    a: 'FitLedger uses secure authentication, role-based access and audit logs, with regular backups to keep your gym data safe.',
+    a: 'GymArchive uses secure authentication, role-based access and audit logs, with regular backups to keep your gym data safe.',
   },
 ];
 

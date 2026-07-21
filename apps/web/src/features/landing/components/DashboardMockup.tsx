@@ -38,7 +38,7 @@ export default function DashboardMockup() {
           <span className="h-3 w-3 rounded-full bg-rose-400/70" />
           <span className="h-3 w-3 rounded-full bg-amber-400/70" />
           <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
-          <span className="ml-3 text-xs font-medium text-slate-400">FitLedger · Dashboard</span>
+          <span className="ml-3 text-xs font-medium text-slate-400">GymArchive · Dashboard</span>
         </div>
 
         {/* Stat cards */}

@@ -20,7 +20,7 @@ export default function WhyChoose() {
   return (
     <section className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
       <div className="mx-auto mb-10 max-w-2xl text-center md:mb-14">
-        <span className="section-label">Why FitLedger</span>
+        <span className="section-label">Why GymArchive</span>
         <h2 className="mt-3 text-balance text-2xl font-bold sm:text-4xl md:text-5xl">
           Ditch the notebook. Run it like a pro.
         </h2>
@@ -33,7 +33,7 @@ export default function WhyChoose() {
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-rose-500/15 text-rose-400">
               <X className="h-4 w-4" />
             </span>
-            Without FitLedger
+            Without GymArchive
           </h3>
           <ul className="space-y-4">
             {without.map((item) => (
@@ -51,7 +51,7 @@ export default function WhyChoose() {
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
               <Check className="h-4 w-4" />
             </span>
-            With FitLedger
+            With GymArchive
           </h3>
           <ul className="space-y-4">
             {withFit.map((item) => (

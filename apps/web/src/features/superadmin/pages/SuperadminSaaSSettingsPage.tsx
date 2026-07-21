@@ -190,7 +190,7 @@ export default function SuperadminSaaSSettingsPage() {
                     <div className="space-y-2">
                       <Label className="text-xs uppercase tracking-widest text-slate-400">Bank Holder Name</Label>
                       <Input 
-                        placeholder="FitLedger Technologies Private Limited" 
+                        placeholder="GymArchive Technologies Private Limited" 
                         value={accountHolder}
                         onChange={(e) => setAccountHolder(e.target.value)}
                       />
