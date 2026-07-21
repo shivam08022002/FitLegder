@@ -26,8 +26,8 @@ const app: express.Application = express();
 
 // Security middleware
 app.use(helmet());
-// Support multiple origins via comma-separated CLIENT_URL (e.g. "https://fitlegder.vercel.app,http://localhost:5173")
-const allowedOrigins = env.CLIENT_URL.split(',').map((o) => o.trim()).filter(Boolean);
+// Support multiple origins via comma-separated CLIENT_URL (e.g. "https://fit-legder-api.vercel.app,http://localhost:5173")
+const allowedOrigins = env.CLIENT_URL ? env.CLIENT_URL.split(',').map((o) => o.trim()).filter(Boolean) : [];
 if (!allowedOrigins.includes('http://localhost:5173')) {
   allowedOrigins.push('http://localhost:5173');
 }
@@ -35,10 +35,21 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (mobile apps, curl, server-to-server)
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      const isAllowed =
+        allowedOrigins.includes('*') ||
+        allowedOrigins.includes(origin) ||
+        /\.vercel\.app$/.test(origin) ||
+        /^http:\/\/localhost(:\d+)?$/.test(origin);
+
+      if (isAllowed) {
         callback(null, true);
       } else {
-        callback(new Error(`CORS: origin ${origin} not allowed`));
+        // Return false to deny CORS gracefully without triggering 500 internal server error
+        callback(null, false);
       }
     },
     credentials: true,
