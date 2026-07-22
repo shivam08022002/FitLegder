@@ -48,7 +48,7 @@ export default function ForgotPasswordPage() {
   return (
     <div className="relative z-0 flex min-h-screen items-center justify-center p-4 overflow-hidden">
       <div className="auth-bg grid-pattern" />
-      <Card className="w-full max-w-[420px] border-white/10 bg-card/60 backdrop-blur-xl animate-scale-in p-2">
+      <Card className="w-full max-w-[420px] border-emerald-500/20 bg-[#050508]/80 shadow-[0_0_60px_-15px_rgba(16,185,129,0.35)] backdrop-blur-2xl animate-scale-in p-2">
         <CardHeader className="text-center pb-4">
           <div className="mx-auto mb-3 flex items-center justify-center">
             <img src={gymLogo} className="h-10 w-auto object-contain drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]" alt="GymArchive" />

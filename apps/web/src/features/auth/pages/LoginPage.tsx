@@ -55,7 +55,7 @@ export default function LoginPage() {
         <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-lime-500/15 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
         <div className="aurora-blob bottom-[-10%] left-[30%] h-[500px] w-[500px] bg-sky-500/15 [animation:aurora-drift_24s_ease-in-out_infinite]" />
       </div>
-      <Card className="w-full max-w-[420px] border-white/[0.08] bg-[#050508]/40 shadow-[0_0_50px_-12px_rgba(139,92,246,0.25)] backdrop-blur-2xl animate-scale-in p-2">
+      <Card className="w-full max-w-[420px] border-emerald-500/20 bg-[#050508]/80 shadow-[0_0_60px_-15px_rgba(16,185,129,0.35)] backdrop-blur-2xl animate-scale-in p-2">
         <CardHeader className="text-center pb-3">
           <div className="mx-auto mb-3 flex items-center justify-center">
             <img src={gymLogo} className="h-10 w-auto object-contain drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]" alt="GymArchive" />
