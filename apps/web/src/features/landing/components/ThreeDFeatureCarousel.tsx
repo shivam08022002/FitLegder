@@ -237,8 +237,8 @@ export const stepCards: FeatureCard[] = [
 ];
 
 const duration = 0.15;
-const transition = { duration, ease: [0.32, 0.72, 0, 1] };
-const transitionOverlay = { duration: 0.35, ease: [0.32, 0.72, 0, 1] };
+const transition = { duration, ease: [0.32, 0.72, 0, 1] as const };
+const transitionOverlay = { duration: 0.35, ease: [0.32, 0.72, 0, 1] as const };
 
 const Carousel = memo(
   ({
