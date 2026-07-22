@@ -89,8 +89,8 @@ export default function ResetPasswordPage() {
             Create New Password
           </CardTitle>
           <CardDescription className="text-slate-400 text-sm mt-1">
-            {isSuccess 
-              ? 'Password reset is complete' 
+            {isSuccess
+              ? 'Password reset is complete'
               : 'Enter and confirm your new password below'}
           </CardDescription>
         </CardHeader>
@@ -121,7 +121,7 @@ export default function ResetPasswordPage() {
                   <span>Warning: No password reset token was found in the URL link. Password reset will fail without a valid token.</span>
                 </div>
               )}
-              
+
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-xs uppercase tracking-widest text-slate-400">New Password</Label>
                 <div className="relative">
@@ -163,7 +163,7 @@ export default function ResetPasswordPage() {
                 )}
               </div>
             </CardContent>
-            
+
             <CardFooter className="flex-col gap-3 pt-2">
               <Button type="submit" className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all duration-300 shimmer-btn" disabled={isSubmitting || !token}>
                 {isSubmitting ? (

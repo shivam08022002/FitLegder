@@ -83,7 +83,7 @@ export default function RegisterPage() {
                 {errors.phone && <p className="text-xs text-red-400">{errors.phone.message}</p>}
               </div>
             </div>
-            
+
             <div className="space-y-1.5">
               <Label htmlFor="gymName" className="text-[11px] uppercase tracking-widest text-slate-400">Gym Name</Label>
               <div className="relative">
@@ -92,7 +92,7 @@ export default function RegisterPage() {
               </div>
               {errors.gymName && <p className="text-xs text-red-400">{errors.gymName.message}</p>}
             </div>
-            
+
             <div className="space-y-1.5">
               <Label htmlFor="email" className="text-[11px] uppercase tracking-widest text-slate-400">Email Address</Label>
               <div className="relative">
@@ -101,7 +101,7 @@ export default function RegisterPage() {
               </div>
               {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
             </div>
-            
+
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <Label htmlFor="password" className="text-[11px] uppercase tracking-widest text-slate-400">Password</Label>

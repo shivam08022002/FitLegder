@@ -81,7 +81,7 @@ export default function LoginPage() {
                 <p className="text-xs text-red-400">{errors.email.message}</p>
               )}
             </div>
-            
+
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password" className="text-xs uppercase tracking-widest text-slate-400">Password</Label>
@@ -118,7 +118,7 @@ export default function LoginPage() {
               </span>
             </div>
           </CardContent>
-          
+
           <CardFooter className="flex-col gap-4 pt-2">
             <Button type="submit" className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all duration-300 shimmer-btn" disabled={isSubmitting}>
               {isSubmitting ? (
@@ -130,7 +130,7 @@ export default function LoginPage() {
                 'Sign In'
               )}
             </Button>
-            
+
             <div className="w-full flex flex-col items-center gap-2 mt-1">
               <p className="text-sm text-slate-400">
                 Don&apos;t have an account?{' '}
@@ -143,7 +143,7 @@ export default function LoginPage() {
                 Includes a 30-day free trial
               </span>
             </div>
-            
+
             <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-4 border-t border-white/5 pt-4 w-full justify-center">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />
               <span>Secure 256-bit SSL encrypted connection</span>

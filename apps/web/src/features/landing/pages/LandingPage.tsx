@@ -45,9 +45,8 @@ function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? 'bg-[#050508]/80 backdrop-blur-xl shadow-xl' : 'bg-transparent'
-      }`}
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-[#050508]/80 backdrop-blur-xl shadow-xl' : 'bg-transparent'
+        }`}
     >
       <nav className="mx-auto flex h-16 max-w-[1300px] items-center justify-between px-5 sm:px-8">
         <Link to="/" className="flex items-center">

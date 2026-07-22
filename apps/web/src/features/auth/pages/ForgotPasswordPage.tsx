@@ -57,12 +57,12 @@ export default function ForgotPasswordPage() {
             Reset Password
           </CardTitle>
           <CardDescription className="text-slate-400 text-sm mt-1">
-            {isSent 
-              ? 'Password reset instructions have been generated' 
+            {isSent
+              ? 'Password reset instructions have been generated'
               : 'Enter your email to receive a password reset link'}
           </CardDescription>
         </CardHeader>
-        
+
         {isSent ? (
           <CardContent className="space-y-6 text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.15)] animate-bounce">
