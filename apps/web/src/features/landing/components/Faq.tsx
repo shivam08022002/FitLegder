@@ -28,7 +28,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative mx-auto max-w-3xl px-5 py-10 sm:px-6 md:py-16">
+    <section id="faq" className="relative mx-auto max-w-[850px] px-6 sm:px-10 py-8 md:py-12">
       <div className="mb-8 text-center">
         <span className="section-label">FAQ</span>
         <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl md:text-5xl">

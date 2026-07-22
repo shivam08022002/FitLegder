@@ -242,7 +242,7 @@ export default function PublicEventPage() {
                       <Label className="text-xs uppercase tracking-widest text-slate-400">Full Name *</Label>
                       <div className="relative">
                         <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" strokeWidth={1.5} />
-                        <Input {...register('name')} placeholder="John Doe" className="pl-10" />
+                        <Input {...register('name')} placeholder="Rahul Sharma" className="pl-10" />
                       </div>
                       {errors.name && <p className="text-xs text-red-400">{errors.name.message}</p>}
                     </div>
@@ -251,7 +251,7 @@ export default function PublicEventPage() {
                       <Label className="text-xs uppercase tracking-widest text-slate-400">Email Address (Optional)</Label>
                       <div className="relative">
                         <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" strokeWidth={1.5} />
-                        <Input type="email" {...register('email')} placeholder="john@example.com" className="pl-10" />
+                        <Input type="email" {...register('email')} placeholder="rahul@example.com" className="pl-10" />
                       </div>
                       {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
                     </div>

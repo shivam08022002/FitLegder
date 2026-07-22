@@ -23,7 +23,7 @@ const trustedSegments = [
 
 function Background() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#050508]">
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
       <div className="grid-pattern absolute inset-0 opacity-60" />
       <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-violet-600/25 [animation:aurora-drift_16s_ease-in-out_infinite]" />
       <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-fuchsia-500/20 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
@@ -45,18 +45,18 @@ function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'border-b border-white/5 bg-[#050508]/40 backdrop-blur-xl' : 'border-b border-transparent'
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        scrolled ? 'bg-[#050508]/80 backdrop-blur-xl shadow-xl' : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
+      <nav className="mx-auto flex h-16 max-w-[1300px] items-center justify-between px-5 sm:px-8">
         <Link to="/" className="flex items-center">
           <img src={gymLogo} alt="GymArchive" className="h-10 w-auto object-contain sm:h-12" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-slate-300 transition-colors hover:text-white">
+            <a key={l.href} href={l.href} className="text-sm text-slate-300 transition-colors hover:text-white font-medium">
               {l.label}
             </a>
           ))}
@@ -66,10 +66,10 @@ function Nav() {
           <Button asChild variant="ghost" size="sm" className="text-slate-200">
             <Link to="/login">Sign In</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="relative rounded-xl border border-violet-400/80 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 text-white font-bold shadow-[0_0_20px_rgba(168,85,247,0.5)] hover:shadow-[0_0_35px_rgba(168,85,247,0.85)] hover:border-violet-300 hover:scale-[1.03] transition-all duration-300">
             <Link to="/register">
               Start Free Trial
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 ml-1" />
             </Link>
           </Button>
         </div>
@@ -84,19 +84,19 @@ function Nav() {
       </nav>
 
       {mobileOpen && (
-        <div className="border-t border-white/5 bg-[#050508]/95 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col gap-1 px-6 py-4">
+        <div className="bg-[#050508]/95 p-4 backdrop-blur-xl md:hidden shadow-2xl">
+          <div className="flex flex-col gap-1 px-2 py-2">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-2 py-2.5 text-sm text-slate-300 hover:bg-white/5 hover:text-white"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 hover:bg-white/10 hover:text-white"
               >
                 {l.label}
               </a>
             ))}
-            <div className="mt-2 flex flex-col gap-2">
+            <div className="mt-2 flex flex-col gap-2 pt-2 border-t border-white/10">
               <Button asChild variant="outline">
                 <Link to="/login">Sign In</Link>
               </Button>
@@ -113,7 +113,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative mx-auto max-w-7xl px-5 pb-8 pt-20 sm:px-6 sm:pt-24 md:pb-16 md:pt-36">
+    <section className="relative mx-auto max-w-[1300px] px-6 sm:px-10 pb-8 pt-20 sm:pt-24 md:pb-16 md:pt-36">
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className="reveal-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300">
@@ -134,7 +134,7 @@ function Hero() {
           </p>
 
           <div className="mt-4 flex flex-row gap-3 sm:mt-6">
-            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-semibold shadow-lg shadow-violet-500/25">
+            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-bold border border-violet-400/80 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 text-white shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:shadow-[0_0_35px_rgba(168,85,247,0.85)] hover:border-violet-300 hover:scale-[1.03] transition-all duration-300">
               <Link to="/register" className="justify-center">
                 Start Free Trial
                 <ArrowRight className="h-4 w-4 ml-1.5" />
@@ -188,7 +188,7 @@ function TrustedBy() {
 
 function FinalCta() {
   return (
-    <section className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
+    <section className="relative mx-auto max-w-[1200px] px-6 sm:px-10 py-10 md:py-16">
       <div className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 px-5 py-8 text-center sm:rounded-[32px] sm:px-6 sm:py-12 md:py-16">
         <div className="aurora-blob left-1/2 top-0 h-72 w-72 -translate-x-1/2 bg-violet-500/25" />
         <div className="relative">
@@ -200,7 +200,7 @@ function FinalCta() {
           </p>
 
           <div className="mt-5 flex flex-row justify-center gap-3">
-            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-semibold shadow-lg shadow-violet-500/25">
+            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-bold border border-violet-400/80 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 text-white shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:shadow-[0_0_35px_rgba(168,85,247,0.85)] hover:border-violet-300 hover:scale-[1.03] transition-all duration-300">
               <Link to="/register" className="justify-center">
                 Start Free Trial
                 <ArrowRight className="h-4 w-4 ml-1.5" />
@@ -228,13 +228,12 @@ function FinalCta() {
 function Footer() {
   const columns = [
     { title: 'Product', links: ['Features', 'How it works', 'FAQ'] },
-    { title: 'Company', links: ['About', 'Contact', 'Careers'] },
     { title: 'Legal', links: ['Privacy', 'Terms', 'Security'] },
   ];
 
   return (
-    <footer className="relative border-t border-white/5 px-5 py-8 sm:px-6 sm:py-10">
-      <div className="mx-auto flex flex-col gap-8 md:flex-row md:justify-between max-w-7xl">
+    <footer className="relative border-t border-white/5 px-6 sm:px-10 py-8 sm:py-10">
+      <div className="mx-auto flex flex-col gap-8 md:flex-row md:justify-between max-w-[1300px]">
         <div className="max-w-sm">
           <img src={gymLogo} alt="GymArchive" className="h-12 w-auto object-contain" />
           <p className="mt-4 text-sm leading-relaxed text-slate-400">
@@ -259,11 +258,11 @@ function Footer() {
           ))}
         </div>
       </div>
-      <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-4 sm:flex-row">
+      <div className="mx-auto mt-8 flex max-w-[1300px] flex-col items-center justify-between gap-4 border-t border-white/5 pt-4 sm:flex-row">
         <p className="text-xs text-slate-500">© {new Date().getFullYear()} GymArchive. All rights reserved.</p>
         <div className="flex items-center gap-4 text-xs text-slate-500">
           <Link to="/login" className="transition-colors hover:text-slate-300">Sign In</Link>
-          <Link to="/register" className="transition-colors hover:text-slate-300">Create account</Link>
+          <Link to="/register" className="transition-colors hover:text-slate-300">Register</Link>
         </div>
       </div>
     </footer>
@@ -272,20 +271,22 @@ function Footer() {
 
 export default function LandingPage() {
   return (
-    <div className="relative min-h-screen text-foreground">
-      <Background />
-      <Nav />
-      <main>
-        <Hero />
-        <TrustedBy />
-        <Features />
-        <HowItWorks />
-        <WhyChoose />
-        <Testimonials />
-        <Faq />
-        <FinalCta />
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-[#020204] text-foreground">
+      <div className="relative mx-auto max-w-[1300px] min-h-screen border-x border-white/10 bg-[#050508] shadow-[0_0_80px_rgba(0,0,0,0.8)] overflow-clip">
+        <Background />
+        <Nav />
+        <main>
+          <Hero />
+          <TrustedBy />
+          <Features />
+          <HowItWorks />
+          <WhyChoose />
+          <Testimonials />
+          <Faq />
+          <FinalCta />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

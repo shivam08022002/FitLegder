@@ -18,7 +18,7 @@ const withFit = [
 
 export default function WhyChoose() {
   return (
-    <section className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
+    <section className="relative mx-auto max-w-[1040px] px-6 sm:px-10 py-8 md:py-12">
       <div className="mx-auto mb-10 max-w-2xl text-center md:mb-14">
         <span className="section-label">Why GymArchive</span>
         <h2 className="mt-3 text-balance text-2xl font-bold sm:text-4xl md:text-5xl">

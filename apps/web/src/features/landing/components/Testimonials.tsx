@@ -10,10 +10,10 @@ const testimonials = [
   },
   {
     quote:
-      'The renewal reminders alone paid for themselves. We stopped losing members who simply forgot to renew.',
-    name: 'Priya Nair',
-    role: 'Founder, FlowState Yoga',
-    initial: 'P',
+      'The automated renewal reminders alone paid for themselves. We stopped losing members who simply forgot to renew.',
+    name: 'Vikram Singh',
+    role: 'Owner, Titan Fitness Center',
+    initial: 'V',
   },
   {
     quote:
@@ -26,7 +26,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-16">
+    <section className="relative mx-auto max-w-[1040px] px-6 sm:px-10 py-8 md:py-12">
       <div className="mx-auto mb-10 max-w-2xl text-center">
         <span className="section-label">Loved by gym owners</span>
         <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl md:text-5xl">

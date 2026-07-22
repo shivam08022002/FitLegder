@@ -60,7 +60,8 @@ export default function AppLayout() {
   };
 
   return (
-    <div className="flex h-[100dvh] overflow-hidden">
+    <div className="min-h-screen bg-[#020204] flex justify-center">
+      <div className="flex h-screen w-full max-w-[1300px] border-x border-white/10 bg-background shadow-2xl overflow-hidden">
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
@@ -251,10 +252,11 @@ export default function AppLayout() {
 
         <GymProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
 
-        <div className="flex-1 p-4 md:p-6 lg:p-8 page-enter">
+        <div className="flex-1 p-4 md:p-6 lg:p-8 page-enter max-w-[1300px] mx-auto w-full">
           <Outlet />
         </div>
       </main>
     </div>
+  </div>
   );
 }
