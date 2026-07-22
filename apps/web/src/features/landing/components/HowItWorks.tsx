@@ -2,7 +2,7 @@ import ThreeDFeatureCarousel, { stepCards } from './ThreeDFeatureCarousel';
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative mx-auto max-w-[1400px] px-4 sm:px-6 pt-6 pb-2 sm:pt-8 sm:pb-4">
+    <section id="how-it-works" className="scroll-mt-20 sm:scroll-mt-24 relative mx-auto max-w-[1400px] px-4 sm:px-6 pt-6 pb-2 sm:pt-8 sm:pb-4">
       <div className="mx-auto mb-4 max-w-2xl text-center">
         <span className="section-label">Interactive Onboarding Guide</span>
         <h2 className="mt-2 text-balance text-2xl font-bold sm:text-4xl md:text-5xl">

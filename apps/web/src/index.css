@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
   :root {
     --background: 240 10% 3.5%;
     --foreground: 210 40% 98%;
