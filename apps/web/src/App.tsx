@@ -48,9 +48,10 @@ function PublicGate() {
 
 export default function App() {
   const { user, isAuthenticated, isLoading } = useAuth();
+  const location = useLocation();
   const isSuperadmin = user?.role === 'superadmin';
 
-  const rootElement = isLoading ? (
+  const rootElement = (isLoading && location.pathname !== '/') ? (
     <FullScreenLoader />
   ) : isAuthenticated ? (
     <AppLayout />
