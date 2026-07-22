@@ -113,7 +113,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative mx-auto max-w-[1300px] px-6 sm:px-10 pb-8 pt-20 sm:pt-24 md:pb-16 md:pt-36">
+    <section className="relative mx-auto max-w-[1300px] px-6 sm:px-10 pb-4 pt-6 sm:pt-10 md:pb-8 md:pt-14">
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className="reveal-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300">
