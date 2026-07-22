@@ -96,7 +96,7 @@ export default function PaymentsPage() {
           <select
             value={sortBy}
             onChange={(e) => { setSortBy(e.target.value); setPage(1); }}
-            className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50"
+            className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60"
           >
             <option value="newest">📅 Newest First</option>
             <option value="oldest">📅 Oldest First</option>
@@ -108,7 +108,7 @@ export default function PaymentsPage() {
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+          <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
         </div>
       ) : payments.length === 0 ? (
         <Card className="border-white/5 bg-white/[0.03]">
@@ -151,7 +151,7 @@ export default function PaymentsPage() {
                         {p.membership?.plan?.name && (
                           <>
                             <span className="hidden sm:inline">·</span>
-                            <span className="text-violet-400 font-medium">{p.membership.plan.name}</span>
+                            <span className="text-emerald-400 font-medium">{p.membership.plan.name}</span>
                           </>
                         )}
                       </div>
@@ -220,7 +220,7 @@ export default function PaymentsPage() {
             
             <div className="space-y-2">
               <Label className="text-xs uppercase tracking-widest text-slate-400">Member *</Label>
-              <select name="memberId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
+              <select name="memberId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
                 <option value="">Select member</option>
                 {members.map((m: any) => <option key={m._id} value={m._id}>{m.fullName} — {m.phone}</option>)}
               </select>
@@ -228,7 +228,7 @@ export default function PaymentsPage() {
             
             <div className="space-y-2">
               <Label className="text-xs uppercase tracking-widest text-slate-400">Plan *</Label>
-              <select name="planId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
+              <select name="planId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
                 <option value="">Select plan</option>
                 {plans.filter((p: any) => p.isActive).map((p: any) => <option key={p._id} value={p._id}>{p.name} — {formatMoney(p.price, gym?.currency)}</option>)}
               </select>
@@ -241,7 +241,7 @@ export default function PaymentsPage() {
               </div>
               <div className="space-y-2">
                 <Label className="text-xs uppercase tracking-widest text-slate-400">Method *</Label>
-                <select name="method" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
+                <select name="method" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
                   <option value="cash">Cash</option>
                   <option value="upi">UPI</option>
                   <option value="card">Card</option>

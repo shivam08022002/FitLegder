@@ -73,7 +73,7 @@ export default function ChangePasswordPage() {
       <Card className="border-white/10 bg-card/60 backdrop-blur-xl p-1">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 shadow-[0_0_15px_rgba(139,92,246,0.1)]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
               <KeyRound className="h-5 w-5" strokeWidth={1.5} />
             </div>
             <div>

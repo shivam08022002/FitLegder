@@ -71,7 +71,7 @@ export default function RenewalsPage() {
           <p className="text-sm text-slate-400">Renew, upgrade, or extend member subscriptions</p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          <Button onClick={() => setShowRenewDialog(true)} className="gap-2 shadow-lg shadow-violet-500/20">
+          <Button onClick={() => setShowRenewDialog(true)} className="gap-2 shadow-lg shadow-emerald-500/20">
             <RefreshCw className="h-4 w-4" strokeWidth={1.5} /> Renew / Upgrade
           </Button>
           <Button onClick={() => setShowExtendDialog(true)} variant="secondary" className="gap-2">
@@ -115,7 +115,7 @@ export default function RenewalsPage() {
                     <div className="min-w-0">
                       <p className="font-bold text-sm text-slate-100 truncate">{m.fullName}</p>
                       <div className="text-xs text-slate-400 flex flex-wrap items-center gap-2 mt-1">
-                        <Badge variant="secondary" className="text-[9px] font-semibold bg-violet-500/10 text-violet-400 border border-violet-500/20 px-1.5 py-0">
+                        <Badge variant="secondary" className="text-[9px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0">
                           {m.latestMembership?.planDetails?.name || 'N/A'}
                         </Badge>
                         <span className="flex items-center gap-1 text-[10px] text-slate-400">
@@ -161,7 +161,7 @@ export default function RenewalsPage() {
                 value={selectedMemberId} 
                 onChange={(e) => setSelectedMemberId(e.target.value)} 
                 required 
-                className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50"
+                className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60"
               >
                 <option value="">Select member</option>
                 {members.map((m: any) => <option key={m._id} value={m._id}>{m.fullName}</option>)}
@@ -169,10 +169,12 @@ export default function RenewalsPage() {
             </div>
             
             <div className="space-y-2">
-              <Label className="text-xs uppercase tracking-widest text-slate-400">Plan *</Label>
-              <select name="planId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
-                <option value="">Select plan</option>
-                {plans.filter((p: any) => p.isActive).map((p: any) => <option key={p._id} value={p._id}>{p.name} — {formatMoney(p.price, gym?.currency)}</option>)}
+              <label className="text-xs uppercase tracking-widest text-slate-400 font-bold">Select Plan *</label>
+              <select name="planId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
+                <option value="">-- Select Plan --</option>
+                {plans.map((p: any) => (
+                  <option key={p._id} value={p._id}>{p.name} ({p.durationInDays || p.durationMonths * 30} days - {formatMoney(p.price, gym?.currency)})</option>
+                ))}
               </select>
             </div>
             
@@ -183,7 +185,7 @@ export default function RenewalsPage() {
               </div>
               <div className="space-y-2">
                 <Label className="text-xs uppercase tracking-widest text-slate-400">Method</Label>
-                <select name="method" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
+                <select name="method" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
                   <option value="upi">UPI</option>
                   <option value="cash">Cash</option>
                   <option value="card">Card</option>
@@ -230,7 +232,7 @@ export default function RenewalsPage() {
             
             <div className="space-y-2">
               <Label className="text-xs uppercase tracking-widest text-slate-400">Member *</Label>
-              <select name="memberId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
+              <select name="memberId" required className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
                 <option value="">Select member</option>
                 {membersWithMembership.map((m: any) => <option key={m._id} value={m._id}>{m.fullName}</option>)}
               </select>

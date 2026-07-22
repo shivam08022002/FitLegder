@@ -82,8 +82,8 @@ export default function ResetPasswordPage() {
       <div className="auth-bg grid-pattern" />
       <Card className="w-full max-w-[420px] border-white/10 bg-card/60 backdrop-blur-xl animate-scale-in p-2">
         <CardHeader className="text-center pb-4">
-          <div className="mx-auto mb-4 flex items-center justify-center">
-            <img src={gymLogo} className="h-14 w-auto object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="GymArchive" />
+          <div className="mx-auto mb-3 flex items-center justify-center">
+            <img src={gymLogo} className="h-10 w-auto object-contain drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]" alt="GymArchive" />
           </div>
           <CardTitle className="text-2xl font-bold">
             Create New Password
@@ -105,7 +105,7 @@ export default function ResetPasswordPage() {
             </p>
             <CardFooter className="flex-col gap-4 px-0 pb-0">
               <Link to="/login" className="w-full">
-                <Button className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+                <Button className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
                   Proceed to Login
                   <ArrowRight className="h-4 w-4" />
                 </Button>
@@ -165,7 +165,7 @@ export default function ResetPasswordPage() {
             </CardContent>
             
             <CardFooter className="flex-col gap-3 pt-2">
-              <Button type="submit" className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 hover:-translate-y-0.5 transition-all duration-300 shimmer-btn" disabled={isSubmitting || !token}>
+              <Button type="submit" className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all duration-300 shimmer-btn" disabled={isSubmitting || !token}>
                 {isSubmitting ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin mr-2" />

@@ -45,8 +45,8 @@ export default function DashboardMockup() {
         <div className="grid grid-cols-3 gap-2 sm:gap-3">
           {[
             { icon: IndianRupee, label: "Today's Revenue", value: '₹18,400', tone: 'text-emerald-400 bg-emerald-500/15' },
-            { icon: Users, label: 'Active Members', value: '842', tone: 'text-violet-400 bg-violet-500/15' },
-            { icon: TrendingUp, label: 'Growth', value: '+12.4%', tone: 'text-sky-400 bg-sky-500/15' },
+            { icon: Users, label: 'Active Members', value: '842', tone: 'text-lime-400 bg-lime-500/15' },
+            { icon: TrendingUp, label: 'Growth', value: '+12.4%', tone: 'text-emerald-400 bg-emerald-500/15' },
           ].map((s) => (
             <div key={s.label} className="rounded-xl border border-white/5 bg-white/[0.03] p-2 sm:p-3 flex flex-col justify-between">
               <div className={`mb-1.5 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg ${s.tone} shrink-0`}>
@@ -62,7 +62,7 @@ export default function DashboardMockup() {
         <div className="mt-4 rounded-2xl border border-white/5 bg-white/[0.03] p-4">
           <div className="mb-3 flex items-center justify-between">
             <p className="text-xs font-semibold text-white">Monthly Revenue</p>
-            <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-[10px] font-medium text-violet-300">
+            <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-medium text-emerald-300">
               Last 7 months
             </span>
           </div>
@@ -70,7 +70,7 @@ export default function DashboardMockup() {
             {bars.map((h, i) => (
               <div
                 key={i}
-                className="w-full rounded-t-md bg-gradient-to-t from-violet-600/40 to-fuchsia-500/80"
+                className="w-full rounded-t-md bg-gradient-to-t from-emerald-600/40 to-lime-400/80"
                 style={{ height: `${h}%` }}
               />
             ))}
@@ -80,7 +80,7 @@ export default function DashboardMockup() {
         {/* Member row */}
         <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-xs font-bold text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-xs font-bold text-slate-950">
               R
             </div>
             <div>

@@ -51,14 +51,14 @@ export default function LoginPage() {
     <div className="relative z-0 flex min-h-screen items-center justify-center p-4 overflow-hidden bg-[#050508]">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#050508]">
         <div className="grid-pattern absolute inset-0 opacity-60" />
-        <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-violet-600/25 [animation:aurora-drift_16s_ease-in-out_infinite]" />
-        <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-fuchsia-500/20 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
+        <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-emerald-600/20 [animation:aurora-drift_16s_ease-in-out_infinite]" />
+        <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-lime-500/15 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
         <div className="aurora-blob bottom-[-10%] left-[30%] h-[500px] w-[500px] bg-sky-500/15 [animation:aurora-drift_24s_ease-in-out_infinite]" />
       </div>
       <Card className="w-full max-w-[420px] border-white/[0.08] bg-[#050508]/40 shadow-[0_0_50px_-12px_rgba(139,92,246,0.25)] backdrop-blur-2xl animate-scale-in p-2">
         <CardHeader className="text-center pb-3">
           <div className="mx-auto mb-3 flex items-center justify-center">
-            <img src={gymLogo} className="h-16 w-auto object-contain drop-shadow-[0_0_25px_rgba(139,92,246,0.35)]" alt="GymArchive" />
+            <img src={gymLogo} className="h-10 w-auto object-contain drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]" alt="GymArchive" />
           </div>
           <CardTitle className="text-xl font-bold text-balance">Welcome back</CardTitle>
           <CardDescription className="text-slate-400 text-sm mt-1">Sign in to manage your gym dashboard</CardDescription>
@@ -85,7 +85,7 @@ export default function LoginPage() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password" className="text-xs uppercase tracking-widest text-slate-400">Password</Label>
-                <Link to="/forgot-password" className="text-xs text-violet-400 hover:text-violet-300 transition-colors">
+                <Link to="/forgot-password" className="text-xs text-emerald-400 hover:text-emerald-300 transition-colors">
                   Forgot password?
                 </Link>
               </div>
@@ -120,10 +120,10 @@ export default function LoginPage() {
           </CardContent>
           
           <CardFooter className="flex-col gap-4 pt-2">
-            <Button type="submit" className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 hover:-translate-y-0.5 transition-all duration-300 shimmer-btn" disabled={isSubmitting}>
+            <Button type="submit" className="w-full h-12 rounded-xl text-base font-semibold shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all duration-300 shimmer-btn" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
                   Signing in...
                 </>
               ) : (
@@ -134,7 +134,7 @@ export default function LoginPage() {
             <div className="w-full flex flex-col items-center gap-2 mt-1">
               <p className="text-sm text-slate-400">
                 Don&apos;t have an account?{' '}
-                <Link to="/register" className="text-violet-400 hover:text-violet-300 transition-all font-semibold hover:underline decoration-violet-400 decoration-2 underline-offset-4">
+                <Link to="/register" className="text-emerald-400 hover:text-emerald-300 transition-all font-semibold hover:underline decoration-emerald-400 decoration-2 underline-offset-4">
                   Create one
                 </Link>
               </p>

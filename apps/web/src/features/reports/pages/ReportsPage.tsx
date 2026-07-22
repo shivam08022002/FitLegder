@@ -86,7 +86,7 @@ export default function ReportsPage() {
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+          <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
         </div>
       ) : (
         <>
@@ -134,7 +134,7 @@ export default function ReportsPage() {
                   <p className="text-[11px] uppercase tracking-widest text-slate-500 font-medium">Data Points</p>
                   <p className="text-2xl font-bold text-white mt-1.5 tabular-nums">{revenueData?.data?.length || 0}</p>
                 </div>
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 shadow-[0_0_15px_rgba(139,92,246,0.1)]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
                   <Database className="h-5 w-5" strokeWidth={1.5} />
                 </div>
               </CardContent>
@@ -159,15 +159,15 @@ export default function ReportsPage() {
                   <AreaChart data={revenueData.data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <defs>
                       <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3} />
+                        <stop offset="95%" stopColor="#06b6d4" stopOpacity={0} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
                     <XAxis dataKey="label" stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} dy={8} />
                     <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v) => `₹${v}`} dx={-8} />
                     <Tooltip content={<CustomTooltip formatter={(value: number) => [formatMoney(value, gym?.currency), 'Revenue']} />} />
-                    <Area type="monotone" dataKey="revenue" stroke="#8b5cf6" strokeWidth={2} fill="url(#colorRevenue)" />
+                    <Area type="monotone" dataKey="revenue" stroke="#06b6d4" strokeWidth={2} fill="url(#colorRevenue)" />
                   </AreaChart>
                 </ResponsiveContainer>
               )}

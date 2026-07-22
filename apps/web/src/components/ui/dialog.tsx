@@ -37,7 +37,7 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-violet-500">
+      <DialogPrimitive.Close className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-400">
         <X className="h-3.5 w-3.5" />
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>

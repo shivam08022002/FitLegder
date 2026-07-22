@@ -68,23 +68,25 @@ export default function PublicEventPage() {
 
   return (
     <div className="min-h-screen bg-[#0B0E14] text-foreground py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-violet-600/10 blur-[100px] pointer-events-none -z-10" />
+      {/* Glow background */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-emerald-600/10 blur-[100px] pointer-events-none -z-10" />
 
       <div className="max-w-4xl mx-auto space-y-8 relative z-10 stagger-children">
         
-        {/* Hero Section */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-12">
-          {event.gym?.logo ? (
-            <img src={event.gym.logo} alt={event.gym.name} className="h-16 w-16 rounded-2xl object-cover border-2 border-violet-500/20 shadow-md" />
-          ) : (
-            <div className="h-16 w-16 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center">
-              <CalendarDays className="h-8 w-8 text-violet-400" strokeWidth={1.5} />
-            </div>
-          )}
+        {/* Header */}
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center justify-center">
+            {event.gym?.logo ? (
+              <img src={event.gym.logo} alt={event.gym.name} className="h-16 w-16 rounded-2xl object-cover border-2 border-emerald-500/20 shadow-md" />
+            ) : (
+              <div className="h-16 w-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                <CalendarDays className="h-8 w-8 text-emerald-400" strokeWidth={1.5} />
+              </div>
+            )}
+          </div>
           <div>
-            <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-widest">{event.gym?.name || 'Paradise Gym'} presents</h2>
-            <h1 className="text-4xl md:text-5xl font-extrabold gradient-text bg-gradient-to-r from-violet-400 to-fuchsia-400 mt-2">{event.title}</h1>
+            <p className="text-xs uppercase tracking-widest text-slate-400 font-bold">{event.gym?.name || 'Paradise Gym'} Presents</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold gradient-text bg-gradient-to-r from-emerald-400 to-lime-300 mt-2">{event.title}</h1>
             <p className="text-slate-400 text-base md:text-lg mt-3 font-medium">Test your strength. Claim the title.</p>
           </div>
         </div>
@@ -104,19 +106,19 @@ export default function PublicEventPage() {
                 
                 <div className="space-y-4 pt-6 border-t border-white/5">
                   <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 flex items-center justify-center">
+                    <div className="h-9 w-9 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center">
                       <CalendarDays className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <span className="font-semibold text-sm text-slate-200">{format(new Date(event.date), 'PPPP')}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 flex items-center justify-center">
+                    <div className="h-9 w-9 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center">
                       <Clock className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <span className="font-semibold text-sm text-slate-200">{event.time}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 flex items-center justify-center">
+                    <div className="h-9 w-9 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center">
                       <MapPin className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <span className="font-semibold text-sm text-slate-200">{event.location}</span>
@@ -228,7 +230,7 @@ export default function PublicEventPage() {
                         <span className="font-bold text-emerald-400">Confirmed</span>
                       </div>
                     </div>
-                    <Button onClick={() => window.print()} className="w-full mt-4 rounded-xl shadow-lg shadow-violet-500/10">
+                    <Button onClick={() => window.print()} className="w-full mt-4 rounded-xl shadow-lg shadow-emerald-500/10">
                       Print Confirmation
                     </Button>
                   </div>
@@ -280,14 +282,14 @@ export default function PublicEventPage() {
                         
                         <div className="space-y-2">
                           <Label className="text-xs uppercase tracking-widest text-slate-400">Payment Screenshot (Optional)</Label>
-                          <div className="relative border-2 border-dashed border-white/10 hover:border-violet-500/50 rounded-xl p-6 transition-all group flex flex-col items-center justify-center text-center cursor-pointer bg-slate-800/10">
+                          <div className="relative border-2 border-dashed border-white/10 hover:border-emerald-500/50 rounded-xl p-6 transition-all group flex flex-col items-center justify-center text-center cursor-pointer bg-slate-800/10">
                             <input 
                               type="file" 
                               accept="image/*" 
                               onChange={handleImageChange} 
                               className="absolute inset-0 opacity-0 cursor-pointer"
                             />
-                            <Upload className="h-6 w-6 text-slate-500 mb-2 group-hover:text-violet-400 transition-colors" />
+                            <Upload className="h-6 w-6 text-slate-500 mb-2 group-hover:text-emerald-400 transition-colors" />
                             {screenshot ? (
                               <p className="text-xs text-emerald-400 font-semibold">Screenshot Attached</p>
                             ) : (
@@ -301,7 +303,7 @@ export default function PublicEventPage() {
                       </div>
                     )}
 
-                    <Button type="submit" className="w-full mt-6 h-12 rounded-xl text-base font-semibold shadow-lg shadow-violet-500/20" size="lg" disabled={mutation.isPending}>
+                    <Button type="submit" className="w-full mt-6 h-12 rounded-xl text-base font-semibold shadow-lg shadow-emerald-500/20" size="lg" disabled={mutation.isPending}>
                       {mutation.isPending ? 'Registering...' : 'Confirm Registration'}
                     </Button>
 

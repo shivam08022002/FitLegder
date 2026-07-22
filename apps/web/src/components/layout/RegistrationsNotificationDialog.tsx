@@ -57,7 +57,7 @@ export function RegistrationsNotificationDialog({ open, onOpenChange }: Registra
       <DialogContent className="max-w-2xl bg-card/95 backdrop-blur-2xl border-white/10 rounded-2xl shadow-2xl max-h-[85vh] flex flex-col p-6">
         <DialogHeader className="border-b border-white/5 pb-4 shrink-0">
           <div className="flex items-center gap-2">
-            <BellRing className="h-5 w-5 text-violet-400" />
+            <BellRing className="h-5 w-5 text-emerald-400" />
             <DialogTitle className="text-xl font-bold">Pending Registrations</DialogTitle>
           </div>
           <DialogDescription className="text-slate-400 text-sm">
@@ -68,7 +68,7 @@ export function RegistrationsNotificationDialog({ open, onOpenChange }: Registra
         <div className="flex-1 overflow-y-auto space-y-4 pr-1 mt-4 custom-scrollbar">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-12">
-              <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+              <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
               <p className="text-xs text-slate-400 mt-2">Refreshing registration list...</p>
             </div>
           ) : !registrations || registrations.length === 0 ? (
@@ -85,7 +85,7 @@ export function RegistrationsNotificationDialog({ open, onOpenChange }: Registra
                   {/* Top line: Event title & User details */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
                     <div>
-                      <span className="text-[10px] uppercase tracking-wider text-violet-400 font-extrabold bg-violet-500/10 px-2.5 py-1 rounded-full">
+                      <span className="text-[10px] uppercase tracking-wider text-emerald-300 font-extrabold bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">
                         {reg.event?.title || 'Unknown Event'}
                       </span>
                       <h4 className="text-base font-bold text-slate-100 mt-2">{reg.name}</h4>
@@ -99,7 +99,7 @@ export function RegistrationsNotificationDialog({ open, onOpenChange }: Registra
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-400">
                     {reg.email ? (
                       <p className="flex items-center gap-2 truncate">
-                        <Mail className="h-3.5 w-3.5 text-violet-400 shrink-0" />
+                        <Mail className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                         <span className="truncate">{reg.email}</span>
                       </p>
                     ) : (
@@ -109,7 +109,7 @@ export function RegistrationsNotificationDialog({ open, onOpenChange }: Registra
                       </p>
                     )}
                     <p className="flex items-center gap-2">
-                      <Phone className="h-3.5 w-3.5 text-violet-400 shrink-0" />
+                      <Phone className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                       {reg.phone}
                     </p>
                   </div>
@@ -117,14 +117,14 @@ export function RegistrationsNotificationDialog({ open, onOpenChange }: Registra
                   {reg.utr && (
                     <div className="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs w-full">
                       <div className="flex items-center gap-2 truncate">
-                        <Hash className="h-3.5 w-3.5 text-violet-400 shrink-0" />
+                        <Hash className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                         <span className="text-slate-400">Reference / UTR:</span>
                         <span className="font-mono text-slate-100 font-bold truncate select-all">{reg.utr}</span>
                       </div>
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 px-3 text-xs text-violet-400 hover:text-violet-300 hover:bg-white/5 rounded-lg shrink-0"
+                        className="h-7 px-3 text-xs text-emerald-400 hover:text-emerald-300 hover:bg-white/5 rounded-lg shrink-0"
                         onClick={() => {
                           navigator.clipboard.writeText(reg.utr);
                           toast({ title: 'Copied Reference!', description: 'UTR reference number copied.' });
@@ -152,7 +152,7 @@ export function RegistrationsNotificationDialog({ open, onOpenChange }: Registra
                             href={reg.paymentScreenshot}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-[11px] text-violet-400 hover:text-violet-300 font-medium flex items-center gap-1 mt-0.5"
+                            className="text-[11px] text-emerald-400 hover:text-emerald-300 font-medium flex items-center gap-1 mt-0.5"
                           >
                             View Receipt <ExternalLink className="h-3 w-3" />
                           </a>

@@ -186,7 +186,7 @@ export default function SuperadminOwnersPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="border-white/5 bg-white/[0.02]">
           <CardContent className="p-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-600/20 text-violet-400">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600/20 text-emerald-400">
               <Users className="h-6 w-6" />
             </div>
             <div>
@@ -197,7 +197,7 @@ export default function SuperadminOwnersPage() {
         </Card>
         <Card className="border-white/5 bg-white/[0.02]">
           <CardContent className="p-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600/20 text-indigo-400">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600/20 text-emerald-400">
               <Dumbbell className="h-6 w-6" />
             </div>
             <div>
@@ -210,12 +210,12 @@ export default function SuperadminOwnersPage() {
         </Card>
         <Card className="border-white/5 bg-white/[0.02]">
           <CardContent className="p-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20 text-amber-400">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600/20 text-emerald-400">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Portal Status</p>
-              <h3 className="text-lg font-bold text-amber-400">Super Administrator</h3>
+              <h3 className="text-lg font-bold text-emerald-400">Super Administrator</h3>
             </div>
           </CardContent>
         </Card>
@@ -264,7 +264,7 @@ export default function SuperadminOwnersPage() {
                     <tr key={owner._id} className="hover:bg-white/[0.01] transition-colors">
                       <td className="py-4 px-4 font-medium">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-600/20 text-xs font-bold text-violet-400">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600/20 text-xs font-bold text-emerald-400">
                             {owner.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -289,12 +289,12 @@ export default function SuperadminOwnersPage() {
                       </td>
                       <td className="py-4 px-4 text-xs space-y-1">
                         <p className="flex items-center gap-1.5 text-muted-foreground">
-                          <Mail className="h-3.5 w-3.5 text-violet-400" />
+                          <Mail className="h-3.5 w-3.5 text-emerald-400" />
                           {owner.email}
                         </p>
                         {owner.phone && (
                           <p className="flex items-center gap-1.5 text-muted-foreground">
-                            <Phone className="h-3.5 w-3.5 text-violet-400" />
+                            <Phone className="h-3.5 w-3.5 text-emerald-400" />
                             {owner.phone}
                           </p>
                         )}

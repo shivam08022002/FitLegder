@@ -134,7 +134,7 @@ export default function MembersPage() {
             className={cn(
               "rounded-lg px-4 py-2 text-xs font-semibold transition-all duration-300",
               activeTab === 'all'
-                ? "bg-violet-600 text-white shadow-md shadow-violet-600/10"
+                ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/10"
                 : "text-slate-400 hover:text-slate-200"
             )}
           >
@@ -145,7 +145,7 @@ export default function MembersPage() {
             className={cn(
               "rounded-lg px-4 py-2 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300",
               activeTab === 'morning'
-                ? "bg-violet-600 text-white shadow-md shadow-violet-600/10"
+                ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/10"
                 : "text-slate-400 hover:text-slate-200"
             )}
           >
@@ -156,7 +156,7 @@ export default function MembersPage() {
             className={cn(
               "rounded-lg px-4 py-2 text-xs font-semibold flex items-center gap-1.5 transition-all duration-300",
               activeTab === 'evening'
-                ? "bg-violet-600 text-white shadow-md shadow-violet-600/10"
+                ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/10"
                 : "text-slate-400 hover:text-slate-200"
             )}
           >
@@ -178,7 +178,7 @@ export default function MembersPage() {
       {/* Member List */}
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+          <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
         </div>
       ) : members.length === 0 ? (
         <Card className="border-white/5 bg-white/[0.03]">
@@ -186,7 +186,7 @@ export default function MembersPage() {
             <Dumbbell className="h-12 w-12 text-slate-500 mb-4" strokeWidth={1.5} />
             <p className="text-lg font-medium text-slate-200">No members found</p>
             <p className="text-sm text-slate-400 mb-6">Get started by adding your first gym member</p>
-            <Button onClick={() => setShowAddDialog(true)} className="gap-2">
+            <Button onClick={() => setShowAddDialog(true)} className="gap-2 bg-emerald-600 hover:bg-emerald-700">
               <UserPlus className="h-4 w-4" strokeWidth={1.5} /> Add Member
             </Button>
           </CardContent>
@@ -199,15 +199,15 @@ export default function MembersPage() {
             return (
               <Card 
                 key={member._id} 
-                className="overflow-hidden border-white/[0.06] bg-[rgba(15,23,42,0.5)] backdrop-blur-xl hover:translate-x-1 duration-300 hover:border-violet-500/20 group"
+                className="overflow-hidden border-white/[0.06] bg-[rgba(15,23,42,0.5)] backdrop-blur-xl hover:translate-x-1 duration-300 hover:border-emerald-500/20 group"
               >
                 <CardContent className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-3 sm:gap-4 min-w-0 w-full sm:w-auto">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-sm font-bold text-white shadow-md relative">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-600 to-green-600 text-sm font-bold text-white shadow-md relative">
                       {member.fullName?.charAt(0).toUpperCase()}
                       <span className={cn(
                         "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border border-slate-950 text-[10px] text-white shadow-md",
-                        isMorning ? "bg-amber-500" : "bg-indigo-500"
+                        isMorning ? "bg-amber-500" : "bg-emerald-500"
                       )}>
                         {isMorning ? <Sun className="h-2.5 w-2.5" /> : <Moon className="h-2.5 w-2.5" />}
                       </span>
@@ -222,10 +222,10 @@ export default function MembersPage() {
                         </Badge>
                       </div>
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 mt-1">
-                        <span className="flex items-center gap-1"><Phone className="h-3.5 w-3.5 text-violet-400" strokeWidth={1.5} /> {member.phone}</span>
+                        <span className="flex items-center gap-1"><Phone className="h-3.5 w-3.5 text-emerald-400" strokeWidth={1.5} /> {member.phone}</span>
                         {member.email && (
                           <span className="flex items-center gap-1">
-                            <Mail className="h-3.5 w-3.5 text-violet-400" strokeWidth={1.5} /> {member.email}
+                            <Mail className="h-3.5 w-3.5 text-emerald-400" strokeWidth={1.5} /> {member.email}
                           </span>
                         )}
                       </div>
@@ -236,7 +236,7 @@ export default function MembersPage() {
                         )}
                         {member.latestMembership?.endDate && (
                           <span className="flex items-center gap-1 font-medium">
-                            <Calendar className="h-3 w-3 text-violet-400" strokeWidth={1.5} /> Exp: {formatDate(member.latestMembership.endDate, gym?.timezone)}
+                            <Calendar className="h-3 w-3 text-emerald-400" strokeWidth={1.5} /> Exp: {formatDate(member.latestMembership.endDate, gym?.timezone)}
                           </span>
                         )}
                       </div>
@@ -249,7 +249,7 @@ export default function MembersPage() {
                     )}
                     {member.latestMembership?.endDate && (
                       <p className="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1 justify-end">
-                        <Calendar className="h-3 w-3 text-violet-400" strokeWidth={1.5} /> Exp: {formatDate(member.latestMembership.endDate, gym?.timezone)}
+                        <Calendar className="h-3 w-3 text-emerald-400" strokeWidth={1.5} /> Exp: {formatDate(member.latestMembership.endDate, gym?.timezone)}
                       </p>
                     )}
                   </div>
@@ -273,7 +273,7 @@ export default function MembersPage() {
                           <Button
                             variant="secondary"
                             size="sm"
-                            className="h-8 gap-1.5 rounded-full px-3 bg-violet-500/10 hover:bg-violet-500/20 text-violet-300 border border-violet-500/20 text-[11px] font-semibold"
+                            className="h-8 gap-1.5 rounded-full px-3 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/20 text-[11px] font-semibold"
                             onClick={(e: React.MouseEvent) => { e.stopPropagation(); setMarkingMember(member); }}
                           >
                             <UserCheck className="h-3.5 w-3.5" strokeWidth={1.5} />
@@ -400,8 +400,8 @@ function MarkAttendanceDialog({
       <DialogContent className="max-w-sm bg-card/95 backdrop-blur-2xl border-white/10 rounded-2xl shadow-2xl">
         <DialogHeader>
           <DialogTitle className="text-base font-bold flex items-center gap-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-violet-500/15 border border-violet-500/20">
-              <UserCheck className="h-4 w-4 text-violet-400" strokeWidth={1.5} />
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 border border-emerald-500/20">
+              <UserCheck className="h-4 w-4 text-emerald-400" strokeWidth={1.5} />
             </span>
             Mark Present
           </DialogTitle>
@@ -450,7 +450,7 @@ function MarkAttendanceDialog({
             <Button
               type="submit"
               disabled={isLoading}
-              className="rounded-xl gap-2 shadow-lg shadow-violet-500/20"
+              className="rounded-xl gap-2 shadow-lg shadow-emerald-500/20 bg-emerald-600 hover:bg-emerald-700"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -550,7 +550,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
           {/* Personal Information Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 pb-1 border-b border-white/5">
-              <User className="h-4 w-4 text-violet-400" />
+              <User className="h-4 w-4 text-emerald-400" />
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">Personal Information</h3>
             </div>
             
@@ -586,7 +586,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
               
               <div className="space-y-1.5">
                 <Label className="text-xs font-semibold text-slate-400">Gender *</Label>
-                <select {...register('gender')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
+                <select {...register('gender')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>
@@ -598,7 +598,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
             {/* Morning/Evening batch selection */}
             <div className="space-y-1.5">
               <Label className="text-xs font-semibold text-slate-400">Batch / Timing *</Label>
-              <select {...register('batch')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
+              <select {...register('batch')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
                 <option value="morning">🌅 Morning Batch</option>
                 <option value="evening">🌙 Evening Batch</option>
               </select>
@@ -609,7 +609,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
           {/* Membership Timing Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 pb-1 border-b border-white/5">
-              <Calendar className="h-4 w-4 text-violet-400" />
+              <Calendar className="h-4 w-4 text-emerald-400" />
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">Important Dates</h3>
             </div>
             
@@ -630,16 +630,16 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
 
           {/* Initial Membership & Payment (Add Mode only) */}
           {!member && (
-            <div className="space-y-4 bg-violet-500/5 p-4 rounded-2xl border border-violet-500/10">
+            <div className="space-y-4 bg-emerald-500/5 p-4 rounded-2xl border border-emerald-500/10">
               <div className="flex items-center gap-2 pb-1 border-b border-white/5">
-                <CreditCard className="h-4 w-4 text-violet-400" />
+                <CreditCard className="h-4 w-4 text-emerald-400" />
                 <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">Initial Membership & Payment</h3>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label className="text-xs font-semibold text-slate-400">Select Plan (Optional)</Label>
-                  <select {...register('planId')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
+                  <select {...register('planId')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
                     <option value="">No plan initially</option>
                     {plansData?.map((p: any) => (
                       <option key={p._id} value={p._id}>{p.name} - ₹{p.price}</option>
@@ -657,7 +657,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
               {selectedPlanId && (
                 <div className="space-y-1.5">
                   <Label className="text-xs font-semibold text-slate-400">Payment Method</Label>
-                  <select {...register('paymentMethod')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-violet-500">
+                  <select {...register('paymentMethod')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500">
                     <option value="cash">Cash</option>
                     <option value="card">Card</option>
                     <option value="upi">UPI</option>
@@ -671,7 +671,7 @@ function MemberFormDialog({ open, onClose, member, onSubmit, isLoading }: {
           {/* Additional Details Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 pb-1 border-b border-white/5">
-              <MapPin className="h-4 w-4 text-violet-400" />
+              <MapPin className="h-4 w-4 text-emerald-400" />
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">Additional Details</h3>
             </div>
             

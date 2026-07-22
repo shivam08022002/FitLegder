@@ -25,9 +25,9 @@ function Background() {
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
       <div className="grid-pattern absolute inset-0 opacity-60" />
-      <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-violet-600/25 [animation:aurora-drift_16s_ease-in-out_infinite]" />
-      <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-fuchsia-500/20 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
-      <div className="aurora-blob bottom-[-10%] left-[30%] h-[500px] w-[500px] bg-sky-500/15 [animation:aurora-drift_24s_ease-in-out_infinite]" />
+      <div className="aurora-blob aurora-blob-anim left-[-10%] top-[-5%] h-[520px] w-[520px] bg-emerald-600/20 [animation:aurora-drift_16s_ease-in-out_infinite]" />
+      <div className="aurora-blob right-[-8%] top-[20%] h-[460px] w-[460px] bg-lime-500/15 [animation:aurora-drift_20s_ease-in-out_infinite_reverse]" />
+      <div className="aurora-blob bottom-[-10%] left-[30%] h-[500px] w-[500px] bg-green-500/10 [animation:aurora-drift_24s_ease-in-out_infinite]" />
     </div>
   );
 }
@@ -51,7 +51,7 @@ function Nav() {
     >
       <nav className="mx-auto flex h-16 max-w-[1300px] items-center justify-between px-5 sm:px-8">
         <Link to="/" className="flex items-center">
-          <img src={gymLogo} alt="GymArchive" className="h-10 w-auto object-contain sm:h-12" />
+          <img src={gymLogo} alt="GymArchive" className="h-7 w-auto object-contain sm:h-8" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -66,7 +66,7 @@ function Nav() {
           <Button asChild variant="ghost" size="sm" className="text-slate-200">
             <Link to="/login">Sign In</Link>
           </Button>
-          <Button asChild size="sm" className="relative rounded-xl border border-violet-400/80 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 text-white font-bold shadow-[0_0_20px_rgba(168,85,247,0.5)] hover:shadow-[0_0_35px_rgba(168,85,247,0.85)] hover:border-violet-300 hover:scale-[1.03] transition-all duration-300">
+          <Button asChild size="sm" className="relative rounded-xl border border-emerald-400/80 bg-gradient-to-r from-emerald-500 via-green-500 to-lime-400 text-slate-950 font-bold shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] hover:border-emerald-300 hover:scale-[1.03] transition-all duration-300">
             <Link to="/register">
               Start Free Trial
               <ArrowRight className="h-4 w-4 ml-1" />
@@ -123,7 +123,7 @@ function Hero() {
 
           <h1 className="mt-3 text-balance text-3xl font-bold leading-[1.05] sm:mt-5 sm:text-5xl md:text-6xl">
             Manage your gym{' '}
-            <span className="gradient-text gradient-animate bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
+            <span className="gradient-text gradient-animate bg-gradient-to-r from-emerald-400 via-green-400 to-lime-400 bg-clip-text text-transparent">
               like a pro
             </span>
           </h1>
@@ -134,7 +134,7 @@ function Hero() {
           </p>
 
           <div className="mt-4 flex flex-row gap-3 sm:mt-6">
-            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-bold border border-violet-400/80 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 text-white shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:shadow-[0_0_35px_rgba(168,85,247,0.85)] hover:border-violet-300 hover:scale-[1.03] transition-all duration-300">
+            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-bold border border-emerald-400/80 bg-gradient-to-r from-emerald-500 via-green-500 to-lime-400 text-slate-950 shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] hover:border-emerald-300 hover:scale-[1.03] transition-all duration-300">
               <Link to="/register" className="justify-center">
                 Start Free Trial
                 <ArrowRight className="h-4 w-4 ml-1.5" />
@@ -189,8 +189,8 @@ function TrustedBy() {
 function FinalCta() {
   return (
     <section className="relative mx-auto max-w-[1200px] px-6 sm:px-10 py-10 md:py-16">
-      <div className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-indigo-600/20 px-5 py-8 text-center sm:rounded-[32px] sm:px-6 sm:py-12 md:py-16">
-        <div className="aurora-blob left-1/2 top-0 h-72 w-72 -translate-x-1/2 bg-violet-500/25" />
+      <div className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-emerald-600/20 via-green-600/10 to-lime-600/20 px-5 py-8 text-center sm:rounded-[32px] sm:px-6 sm:py-12 md:py-16">
+        <div className="aurora-blob left-1/2 top-0 h-72 w-72 -translate-x-1/2 bg-emerald-500/20" />
         <div className="relative">
           <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold sm:text-4xl md:text-5xl">
             Ready to transform your gym management?
@@ -200,7 +200,7 @@ function FinalCta() {
           </p>
 
           <div className="mt-5 flex flex-row justify-center gap-3">
-            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-bold border border-violet-400/80 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 text-white shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:shadow-[0_0_35px_rgba(168,85,247,0.85)] hover:border-violet-300 hover:scale-[1.03] transition-all duration-300">
+            <Button asChild className="flex-1 sm:flex-initial h-10 px-4 text-xs sm:h-12 sm:px-6 sm:text-sm font-bold border border-emerald-400/80 bg-gradient-to-r from-emerald-500 via-green-500 to-lime-400 text-slate-950 shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] hover:border-emerald-300 hover:scale-[1.03] transition-all duration-300">
               <Link to="/register" className="justify-center">
                 Start Free Trial
                 <ArrowRight className="h-4 w-4 ml-1.5" />

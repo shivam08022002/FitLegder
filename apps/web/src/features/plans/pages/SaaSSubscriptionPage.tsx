@@ -54,7 +54,7 @@ export default function SaaSSubscriptionPage() {
   if (isLoading || !gym) {
     return (
       <div className="flex justify-center py-20 page-enter">
-        <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
       </div>
     );
   }
@@ -149,7 +149,7 @@ export default function SaaSSubscriptionPage() {
       {/* Upgrade Options (3 Fixed Tiers - Prices Hidden) */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-violet-400" />
+          <Sparkles className="h-5 w-5 text-emerald-400" />
           <h2 className="text-lg font-bold text-slate-200">Select an Upgrade Plan</h2>
         </div>
         
@@ -167,14 +167,14 @@ export default function SaaSSubscriptionPage() {
                 className={cn(
                   'relative border flex flex-col transition-all duration-300 hover:shadow-xl backdrop-blur-xl',
                   isCurrent 
-                    ? 'border-violet-500 bg-violet-500/5 ring-1 ring-violet-500/20' 
+                    ? 'border-emerald-500 bg-emerald-500/5 ring-1 ring-emerald-500/20' 
                     : isPending
                       ? 'border-amber-500 bg-amber-500/5'
                       : 'border-white/5 bg-white/[0.01] hover:border-white/10'
                 )}
               >
                 {isCurrent && (
-                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-violet-600 px-3 py-0.5 text-[9px] font-bold text-white shadow-sm uppercase tracking-wider">
+                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-emerald-600 px-3 py-0.5 text-[9px] font-bold text-white shadow-sm uppercase tracking-wider">
                     Current Plan
                   </span>
                 )}
@@ -218,7 +218,7 @@ export default function SaaSSubscriptionPage() {
                     variant={isCurrent || isPending ? 'secondary' : 'default'}
                     className={cn(
                       'w-full text-xs font-semibold rounded-xl h-10 transition-all mt-4',
-                      isUpgradeable && 'shimmer-btn shadow-lg shadow-violet-500/10'
+                      isUpgradeable && 'shimmer-btn shadow-lg shadow-emerald-500/20'
                     )}
                   >
                     {isCurrent 
@@ -238,10 +238,10 @@ export default function SaaSSubscriptionPage() {
 
       {/* Payment Screen (Displayed when a plan is selected) */}
       {selectedPlan && (
-        <Card id="payment-section" className="p-1 border-violet-500/20 bg-white/[0.02] backdrop-blur-xl animate-scale-in">
+        <Card id="payment-section" className="p-1 border-emerald-500/20 bg-white/[0.02] backdrop-blur-xl animate-scale-in">
           <CardHeader className="border-b border-white/5">
             <CardTitle className="text-base font-bold text-slate-200 flex items-center gap-2">
-              <CreditCard className="h-5 w-5 text-violet-400" />
+              <CreditCard className="h-5 w-5 text-emerald-400" />
               Pay for {selectedPlan.name}
             </CardTitle>
             <CardDescription className="text-slate-400">
@@ -375,7 +375,7 @@ export default function SaaSSubscriptionPage() {
                 <Button 
                   type="submit" 
                   disabled={upgradeMutation.isPending}
-                  className="rounded-xl flex-1 shimmer-btn shadow-lg shadow-violet-500/25"
+                  className="rounded-xl flex-1 shimmer-btn shadow-lg shadow-emerald-500/25 font-bold"
                 >
                   {upgradeMutation.isPending ? (
                     <>

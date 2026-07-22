@@ -139,7 +139,7 @@ export default function SuperadminSaaSSettingsPage() {
             className={cn(
               'flex-1 sm:flex-initial px-5 py-2.5 text-xs font-bold rounded-lg transition-all duration-300 border text-center whitespace-nowrap',
               activeTab === 'payments' 
-                ? 'bg-violet-600 text-white border-violet-500/20 shadow-lg shadow-violet-600/20' 
+                ? 'bg-emerald-600 text-slate-950 border-emerald-500/20 shadow-lg shadow-emerald-600/20 font-bold' 
                 : 'text-slate-400 border-transparent hover:text-slate-200 hover:bg-white/5'
             )}
           >
@@ -153,7 +153,7 @@ export default function SuperadminSaaSSettingsPage() {
             className={cn(
               'flex-1 sm:flex-initial px-5 py-2.5 text-xs font-bold rounded-lg transition-all duration-300 border text-center whitespace-nowrap',
               activeTab === 'plans' 
-                ? 'bg-violet-600 text-white border-violet-500/20 shadow-lg shadow-violet-600/20' 
+                ? 'bg-emerald-600 text-white border-emerald-500/20 shadow-lg shadow-emerald-600/20' 
                 : 'text-slate-400 border-transparent hover:text-slate-200 hover:bg-white/5'
             )}
           >
@@ -166,7 +166,7 @@ export default function SuperadminSaaSSettingsPage() {
         <form onSubmit={handleSave} className="space-y-6">
           {loadingSettings ? (
             <div className="flex h-48 items-center justify-center">
-              <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+              <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
             </div>
           ) : (
             <>
@@ -228,7 +228,7 @@ export default function SuperadminSaaSSettingsPage() {
                     <Label className="text-xs uppercase tracking-widest text-slate-400">Payment QR Code</Label>
                     <div className="flex flex-wrap items-center gap-6">
                       <div className="relative group shrink-0">
-                        <div className="h-32 w-32 rounded-2xl bg-white p-2 border border-slate-700/50 flex items-center justify-center overflow-hidden transition-all group-hover:border-violet-500/50">
+                        <div className="h-32 w-32 rounded-2xl bg-white p-2 border border-slate-700/50 flex items-center justify-center overflow-hidden transition-all group-hover:border-emerald-400">
                           {qrPreview ? (
                             <img src={qrPreview} alt="QR preview" className="h-full w-full object-contain animate-scale-in" />
                           ) : (
@@ -266,7 +266,7 @@ export default function SuperadminSaaSSettingsPage() {
                 <Button 
                   type="submit" 
                   disabled={saveSettingsMutation.isPending}
-                  className="rounded-xl px-8 h-11 shimmer-btn shadow-lg shadow-violet-500/20"
+                  className="rounded-xl px-8 h-11 shimmer-btn shadow-lg shadow-emerald-500/20"
                 >
                   {saveSettingsMutation.isPending ? (
                     <>
@@ -288,14 +288,14 @@ export default function SuperadminSaaSSettingsPage() {
         <form onSubmit={handleSave} className="space-y-6">
           {loadingSettings ? (
             <div className="flex h-48 items-center justify-center">
-              <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+              <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
             </div>
           ) : (
             <>
               {/* Plans Editing Card */}
               <div className="space-y-4 animate-scale-in">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-violet-400" />
+                  <Sparkles className="h-5 w-5 text-emerald-400" />
                   <h2 className="text-lg font-bold text-slate-200">SaaS Upgrade Pricing Tiers (Prices Hidden)</h2>
                 </div>
 
@@ -348,7 +348,7 @@ export default function SuperadminSaaSSettingsPage() {
                 <Button 
                   type="submit" 
                   disabled={saveSettingsMutation.isPending}
-                  className="rounded-xl px-8 h-11 shimmer-btn shadow-lg shadow-violet-500/20"
+                  className="rounded-xl px-8 h-11 shimmer-btn shadow-lg shadow-emerald-500/20"
                 >
                   {saveSettingsMutation.isPending ? (
                     <>

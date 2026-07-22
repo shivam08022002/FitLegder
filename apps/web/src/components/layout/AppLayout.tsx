@@ -79,7 +79,7 @@ export default function AppLayout() {
         )}
       >
         {/* Logo */}
-        <div className="flex h-25 flex-col justify-center border-b border-border px-2 py-2">
+        <div className="flex h-16 flex-col justify-center border-b border-border px-3 py-2">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center min-w-0 cursor-pointer">
               <img
@@ -87,7 +87,7 @@ export default function AppLayout() {
                 alt="GymArchive"
                 className={cn(
                   "object-contain transition-all duration-300",
-                  collapsed ? "h-10 w-auto max-w-[50px]" : "h-12 w-auto max-h-14"
+                  collapsed ? "h-7 w-auto max-w-[36px]" : "h-8 w-auto max-h-9"
                 )}
               />
             </Link>
@@ -115,7 +115,7 @@ export default function AppLayout() {
                 cn(
                   'flex items-center gap-3 rounded-sm px-3 py-2.5 text-sm font-medium transition-all duration-200 group border-l-4',
                   isActive
-                    ? 'border-violet-600 bg-white/5 text-white shadow-sm'
+                    ? 'border-emerald-400 bg-emerald-500/10 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.15)]'
                     : 'border-transparent text-muted-foreground hover:bg-white/5 hover:text-foreground'
                 )
               }
@@ -134,15 +134,15 @@ export default function AppLayout() {
               onClick={() => setMobileOpen(false)} 
               className="block w-full group focus-visible:outline-none"
             >
-              <div className="flex flex-col gap-1.5 rounded-xl bg-violet-600/10 hover:bg-violet-600/15 border border-violet-500/20 hover:border-violet-500/40 p-3 transition-all duration-300 text-left shadow-lg shadow-violet-500/5 hover:shadow-violet-500/10">
+              <div className="flex flex-col gap-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/20 hover:border-emerald-500/40 p-3 transition-all duration-300 text-left shadow-lg shadow-emerald-500/5 hover:shadow-emerald-500/10">
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-bold text-violet-300 uppercase tracking-widest">SaaS License</span>
+                  <span className="text-[10px] font-bold text-emerald-300 uppercase tracking-widest">SaaS License</span>
                   <span className={cn(
                     "text-[9px] font-semibold px-2 py-0.5 rounded-full border",
                     gym.subscriptionPlan === 'free_trial'
                       ? (Math.max(0, Math.ceil((new Date(gym.subscriptionExpiresAt).getTime() - Date.now()) / (1000 * 60 * 60 * 24))) === 0
                         ? "bg-rose-500/20 text-rose-300 border-rose-500/30"
-                        : "bg-violet-500/20 text-violet-300 border-violet-500/30")
+                        : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30")
                       : gym.subscriptionStatus === 'pending_approval'
                         ? "bg-amber-500/20 text-amber-300 border-amber-500/30"
                         : "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
@@ -168,7 +168,7 @@ export default function AppLayout() {
                           ? 'Growth Plan'
                           : 'Enterprise Plan'}
                   </span>
-                  <span className="text-[11px] bg-violet-600 hover:bg-violet-500 text-white font-bold px-2.5 py-1 rounded-lg transition-colors group-hover:scale-105 transform duration-300 flex items-center shadow-md shadow-violet-600/25 shrink-0">
+                  <span className="text-[11px] bg-gradient-to-r from-emerald-500 via-green-500 to-lime-400 text-slate-950 font-bold px-2.5 py-1 rounded-lg transition-transform group-hover:scale-105 transform duration-300 flex items-center shadow-md shadow-emerald-500/25 shrink-0">
                     Upgrade
                   </span>
                 </div>
@@ -178,7 +178,7 @@ export default function AppLayout() {
 
           {!collapsed && isSuperadmin && (
             <div className="flex items-center gap-3 rounded-lg bg-white/5 px-3 py-2">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-xs font-bold text-white">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-xs font-bold text-slate-950">
                 {user?.name?.charAt(0).toUpperCase() || 'U'}
               </div>
               <div className="overflow-hidden">

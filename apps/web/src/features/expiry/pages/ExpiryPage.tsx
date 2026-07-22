@@ -82,7 +82,7 @@ export default function ExpiryPage() {
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+          <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
         </div>
       ) : members.length === 0 ? (
         <Card className="border-white/5 bg-white/[0.03]">
@@ -111,7 +111,7 @@ export default function ExpiryPage() {
                 )}
               >
                 <CardContent className="p-4 flex items-center gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-sm font-bold text-white shadow-md">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-sm font-bold text-slate-950 shadow-md">
                     {m.fullName?.charAt(0).toUpperCase()}
                   </div>
                   
@@ -123,7 +123,7 @@ export default function ExpiryPage() {
                     
                     <div className="flex items-center gap-4 text-xs text-slate-400 mt-1">
                       <span className="flex items-center gap-1">
-                        <Phone className="h-3.5 w-3.5 text-violet-400" strokeWidth={1.5} /> 
+                        <Phone className="h-3.5 w-3.5 text-emerald-400" strokeWidth={1.5} /> 
                         {m.phone}
                       </span>
                       {m.latestMembership?.endDate && (

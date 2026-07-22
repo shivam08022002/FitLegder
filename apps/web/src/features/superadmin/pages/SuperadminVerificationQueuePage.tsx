@@ -55,8 +55,8 @@ export default function SuperadminVerificationQueuePage() {
         </CardHeader>
         <CardContent>
           {loadingUpgrades ? (
-            <div className="flex h-48 items-center justify-center">
-              <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+            <div className="flex justify-center py-20">
+              <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
             </div>
           ) : pendingUpgrades.length === 0 ? (
             <div className="flex h-48 flex-col items-center justify-center text-center">
@@ -81,7 +81,7 @@ export default function SuperadminVerificationQueuePage() {
                     <tr key={gym._id} className="hover:bg-white/[0.01] transition-colors text-slate-300">
                       <td className="py-4 px-4 font-medium">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-600/10 text-violet-400 border border-violet-500/10">
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-400 border border-emerald-500/10">
                             <Building className="h-4.5 w-4.5" strokeWidth={1.5} />
                           </div>
                           <div>
@@ -100,7 +100,7 @@ export default function SuperadminVerificationQueuePage() {
                               : gym.subscriptionPendingPlan}
                       </td>
                       <td className="py-4 px-4">
-                        <span className="bg-slate-800/60 border border-white/5 rounded-lg px-2.5 py-1 font-mono text-xs text-violet-300 select-all">
+                        <span className="bg-slate-800/60 border border-white/5 rounded-lg px-2.5 py-1 font-mono text-xs text-emerald-300 select-all">
                           {gym.subscriptionPaymentDetails?.transactionId || 'N/A'}
                         </span>
                       </td>

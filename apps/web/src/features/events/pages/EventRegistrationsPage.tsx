@@ -55,15 +55,15 @@ export default function EventRegistrationsPage() {
           </div>
         </div>
         {event && (
-          <span className="text-xs font-semibold bg-violet-500/10 text-violet-400 border border-violet-500/20 px-3 py-1.5 rounded-full shrink-0 self-start sm:self-auto">
-            Total Attendees: {registrations?.length || 0}
+          <span className="text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1.5 rounded-full shrink-0 self-start sm:self-auto">
+            {registrations?.length || 0} Registrations
           </span>
         )}
       </div>
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+          <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
         </div>
       ) : !event ? (
         <Card className="border-white/5 bg-white/[0.03]">
@@ -93,15 +93,15 @@ export default function EventRegistrationsPage() {
                 </div>
                 <div className="space-y-2 border-t border-white/5 pt-3 text-xs">
                   <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-violet-400 shrink-0" strokeWidth={1.5} />
+                    <Calendar className="h-4 w-4 text-emerald-400 shrink-0" strokeWidth={1.5} />
                     <span>{format(new Date(event.date), 'PPPP')}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-violet-400 shrink-0" strokeWidth={1.5} />
+                    <Clock className="h-4 w-4 text-emerald-400 shrink-0" strokeWidth={1.5} />
                     <span>{event.time}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-violet-400 shrink-0" strokeWidth={1.5} />
+                    <MapPin className="h-4 w-4 text-emerald-400 shrink-0" strokeWidth={1.5} />
                     <span className="truncate">{event.location}</span>
                   </div>
                 </div>
@@ -145,10 +145,10 @@ export default function EventRegistrationsPage() {
                     {(reg.utr || reg.paymentScreenshot) && (
                       <div className="mt-1 pt-2 border-t border-white/5 flex items-center justify-between flex-wrap gap-2">
                         {reg.utr && (
-                          <p className="text-xs text-slate-400">UTR: <span className="font-mono text-violet-400 font-semibold">{reg.utr}</span></p>
+                          <p className="text-xs text-slate-400">UTR: <span className="font-mono text-emerald-400 font-semibold">{reg.utr}</span></p>
                         )}
                         {reg.paymentScreenshot && (
-                          <a href={reg.paymentScreenshot} target="_blank" rel="noreferrer" className="text-xs text-violet-400 hover:text-violet-300 hover:underline">
+                          <a href={reg.paymentScreenshot} target="_blank" rel="noreferrer" className="text-xs text-emerald-400 hover:text-emerald-300 hover:underline">
                             View Screenshot
                           </a>
                         )}

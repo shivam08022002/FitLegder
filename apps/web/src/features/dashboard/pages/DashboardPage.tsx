@@ -30,7 +30,7 @@ export default function DashboardPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20 page-enter">
-        <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
       </div>
     );
   }
@@ -118,7 +118,7 @@ export default function DashboardPage() {
         'Quick-renew memberships with a single action, creating a new billing log.',
         'Maintains membership history for continuous records.'
       ],
-      color: 'text-violet-400 bg-violet-500/10'
+      color: 'text-emerald-400 bg-emerald-500/10',
     },
     {
       icon: Clock,
@@ -139,7 +139,7 @@ export default function DashboardPage() {
         'All calculations are timezone-adjusted to gym settings.',
         'Analyze true renewal percentages and active membership metrics.'
       ],
-      color: 'text-cyan-400 bg-cyan-500/10'
+      color: 'text-emerald-400 bg-emerald-500/10'
     },
     {
       icon: Settings,
@@ -166,7 +166,7 @@ export default function DashboardPage() {
         <Button
           onClick={() => setHelpOpen(true)}
           variant="outline"
-          className="rounded-xl border-violet-500/20 hover:border-violet-500/40 bg-violet-500/5 hover:bg-violet-500/10 text-violet-400 gap-1.5 h-8.5 px-3 sm:h-9 sm:px-4 text-xs font-semibold shrink-0"
+          className="rounded-xl border-emerald-500/20 hover:border-emerald-500/40 bg-emerald-500/5 hover:bg-emerald-500/10 text-emerald-400 gap-1.5 h-8.5 px-3 sm:h-9 sm:px-4 text-xs font-semibold shrink-0"
         >
           <HelpCircle className="h-4 w-4" />
           <span>How it works</span>
@@ -298,8 +298,8 @@ export default function DashboardPage() {
                 <p className="text-[10px] sm:text-[11px] uppercase tracking-widest text-slate-500 font-medium truncate">Monthly Revenue</p>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white mt-1.5 sm:mt-2.5 tabular-nums">{formatMoney(stats.monthlyRevenue, gym?.currency)}</h3>
               </div>
-              <div className="flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 border border-violet-500/20 shadow-[0_0_15px_rgba(139,92,246,0.1)]">
-                <TrendingUp className="h-4.5 w-4.5 sm:h-6 sm:w-6" strokeWidth={1.5} />
+              <div className="flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.5} />
               </div>
             </div>
           </CardContent>
@@ -316,7 +316,7 @@ export default function DashboardPage() {
               variant="ghost" 
               size="sm" 
               onClick={() => navigate('/payments')} 
-              className="text-xs gap-1 hover:bg-white/5 text-violet-400 hover:text-violet-300 hover:translate-x-1 transition-all duration-300"
+              className="text-xs gap-1 hover:bg-white/5 text-emerald-400 hover:text-emerald-300 hover:translate-x-1 transition-all duration-300"
             >
               View all <ArrowRight className="h-3 w-3" />
             </Button>
@@ -335,7 +335,7 @@ export default function DashboardPage() {
                     className="flex items-center justify-between rounded-xl bg-white/5 border border-white/5 px-2.5 py-2 sm:px-4 sm:py-3 hover:bg-white/[0.08] hover:translate-x-1 transition-all duration-300 group cursor-pointer"
                   >
                     <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-[10px] sm:text-xs font-bold text-white shadow-md">
+                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-[10px] sm:text-xs font-bold text-slate-950 shadow-md">
                         {payment.member?.fullName?.charAt(0).toUpperCase() || '?'}
                       </div>
                       <div className="min-w-0">
@@ -363,7 +363,7 @@ export default function DashboardPage() {
               variant="ghost" 
               size="sm" 
               onClick={() => navigate('/members')} 
-              className="text-xs gap-1 hover:bg-white/5 text-violet-400 hover:text-violet-300 hover:translate-x-1 transition-all duration-300"
+              className="text-xs gap-1 hover:bg-white/5 text-emerald-400 hover:text-emerald-300 hover:translate-x-1 transition-all duration-300"
             >
               View all <ArrowRight className="h-3 w-3" />
             </Button>
@@ -382,7 +382,7 @@ export default function DashboardPage() {
                     className="flex items-center justify-between rounded-xl bg-white/5 border border-white/5 px-2.5 py-2 sm:px-4 sm:py-3 hover:bg-white/[0.08] hover:translate-x-1 transition-all duration-300 group cursor-pointer"
                   >
                     <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-blue-500 text-[10px] sm:text-xs font-bold text-white shadow-md">
+                      <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-[10px] sm:text-xs font-bold text-slate-950 shadow-md">
                         {member.fullName?.charAt(0).toUpperCase() || '?'}
                       </div>
                       <div className="min-w-0">
@@ -411,7 +411,7 @@ export default function DashboardPage() {
         <DialogContent className="max-w-3xl bg-slate-950/95 border-white/10 rounded-2xl shadow-2xl max-h-[85vh] flex flex-col p-6 text-slate-100">
           <DialogHeader className="border-b border-white/5 pb-4 shrink-0">
             <div className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-violet-400" />
+              <BookOpen className="h-5 w-5 text-emerald-400" />
               <DialogTitle className="text-xl font-bold text-white">How GymArchive Works</DialogTitle>
             </div>
             <DialogDescription className="text-slate-400 text-sm">

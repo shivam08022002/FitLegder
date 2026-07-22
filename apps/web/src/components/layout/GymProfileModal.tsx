@@ -92,7 +92,7 @@ export function GymProfileModal({ open, onOpenChange }: { open: boolean, onOpenC
         ) : (
           <>
             <DialogHeader className="flex flex-col items-center text-center sm:text-center space-y-4">
-              <div className="h-24 w-24 rounded-2xl overflow-hidden bg-secondary/50 border-2 border-violet-500/30 shadow-[0_0_30px_rgba(139,92,246,0.2)] flex items-center justify-center">
+              <div className="h-24 w-24 rounded-2xl overflow-hidden bg-secondary/50 border-2 border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.2)] flex items-center justify-center">
                 {gym?.logo ? (
                   <img src={gym.logo} alt={gym.name} className="h-full w-full object-cover" />
                 ) : (
@@ -110,18 +110,18 @@ export function GymProfileModal({ open, onOpenChange }: { open: boolean, onOpenC
             <div className="space-y-6 py-4">
               <div className="flex flex-col gap-3 text-sm border-y border-white/5 py-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground flex items-center gap-1.5"><User className="h-4 w-4 text-violet-400" /> Owner:</span>
+                  <span className="text-muted-foreground flex items-center gap-1.5"><User className="h-4 w-4 text-emerald-400" /> Owner:</span>
                   <span className="font-semibold text-foreground">{user.name}</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-1">
                   {gym?.contactNumber && (
                     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-xs text-slate-300">
-                      <Phone className="h-3.5 w-3.5 text-violet-400" /> {gym.contactNumber}
+                      <Phone className="h-3.5 w-3.5 text-emerald-400" /> {gym.contactNumber}
                     </div>
                   )}
                   {gym?.email && (
                     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-xs text-slate-300">
-                      <Mail className="h-3.5 w-3.5 text-violet-400" /> {gym.email}
+                      <Mail className="h-3.5 w-3.5 text-emerald-400" /> {gym.email}
                     </div>
                   )}
                 </div>
@@ -138,14 +138,14 @@ export function GymProfileModal({ open, onOpenChange }: { open: boolean, onOpenC
                     {plansData?.map((plan: any) => (
                       <div 
                         key={plan._id} 
-                        className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/[0.08] hover:border-l-2 hover:border-l-violet-500 transition-all duration-200 group cursor-pointer"
+                        className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/[0.08] hover:border-l-2 hover:border-l-emerald-400 transition-all duration-200 group cursor-pointer"
                       >
                         <div>
                           <p className="font-medium text-sm text-foreground">{plan.name}</p>
                           <p className="text-xs text-muted-foreground">{plan.durationInDays || plan.durationMonths * 30} days</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Badge variant="secondary" className="bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                          <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
                             {formatMoney(plan.price, gym?.currency || 'INR')}
                           </Badge>
                           <ChevronRight className="h-4 w-4 text-muted-foreground transition-all" />

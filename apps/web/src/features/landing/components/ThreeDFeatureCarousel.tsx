@@ -95,8 +95,8 @@ export const featureCards: FeatureCard[] = [
     tagline: 'Complete 360-degree member records',
     desc: 'Track join dates, assigned plans, payment status, and emergency contacts in one place.',
     points: ['Comprehensive profiles', 'Active/inactive status filtering', 'Emergency contact records', 'Instant search & quick edit'],
-    gradient: 'from-violet-950/95 via-slate-900 to-slate-950',
-    borderGlow: 'border-violet-500/60 group-hover:border-violet-400 shadow-violet-500/20',
+    gradient: 'from-cyan-950/95 via-slate-900 to-slate-950',
+    borderGlow: 'border-emerald-500/60 group-hover:border-emerald-400 shadow-emerald-500/20',
     badge: 'Core Directory',
   },
   {
@@ -117,8 +117,8 @@ export const featureCards: FeatureCard[] = [
     tagline: 'Never lose a member to missed renewals',
     desc: 'Automated expiry alerts notify you of upcoming subscription ends in advance.',
     points: ['Upcoming expiry warnings', 'One-click plan renewal', 'Automated reminders', 'Retention analytics'],
-    gradient: 'from-fuchsia-950/95 via-slate-900 to-slate-950',
-    borderGlow: 'border-fuchsia-500/60 group-hover:border-fuchsia-400 shadow-fuchsia-500/20',
+    gradient: 'from-teal-950/95 via-slate-900 to-slate-950',
+    borderGlow: 'border-teal-500/60 group-hover:border-teal-400 shadow-teal-500/20',
     badge: 'Automation',
   },
   {
@@ -139,8 +139,8 @@ export const featureCards: FeatureCard[] = [
     tagline: 'Public landing pages for competitions',
     desc: 'Host fitness challenges and seminars with custom public registration links.',
     points: ['Public sign-up landing pages', 'Participant registration queue', 'Event management & logs', 'Boost member engagement'],
-    gradient: 'from-indigo-950/95 via-slate-900 to-slate-950',
-    borderGlow: 'border-indigo-500/60 group-hover:border-indigo-400 shadow-indigo-500/20',
+    gradient: 'from-emerald-950/95 via-slate-900 to-slate-950',
+    borderGlow: 'border-emerald-500/60 group-hover:border-emerald-400 shadow-emerald-500/20',
     badge: 'Engagement',
   },
   {
@@ -175,8 +175,8 @@ export const stepCards: FeatureCard[] = [
     tagline: 'Set up your gym profile in 2 minutes',
     desc: 'Create your account, specify gym details, working hours, and upload logo.',
     points: ['Quick account creation', 'Custom gym profile & logo', 'Role & admin config', '30-day free trial'],
-    gradient: 'from-violet-950/95 via-slate-900 to-slate-950',
-    borderGlow: 'border-violet-500/60 group-hover:border-violet-400 shadow-violet-500/20',
+    gradient: 'from-cyan-950/95 via-slate-900 to-slate-950',
+    borderGlow: 'border-emerald-500/60 group-hover:border-emerald-400 shadow-emerald-500/20',
     badge: 'Step 1',
   },
   {
@@ -186,8 +186,8 @@ export const stepCards: FeatureCard[] = [
     tagline: 'Define membership tiers & pricing',
     desc: 'Set up monthly or annual plans with custom pricing and admission fees.',
     points: ['Flexible plan durations', 'Custom pricing & discounts', 'Admission fee config', 'Unlimited tiers'],
-    gradient: 'from-indigo-950/95 via-slate-900 to-slate-950',
-    borderGlow: 'border-indigo-500/60 group-hover:border-indigo-400 shadow-indigo-500/20',
+    gradient: 'from-teal-950/95 via-slate-900 to-slate-950',
+    borderGlow: 'border-teal-500/60 group-hover:border-teal-400 shadow-teal-500/20',
     badge: 'Step 2',
   },
   {
@@ -230,8 +230,8 @@ export const stepCards: FeatureCard[] = [
     tagline: 'Automate renewals & view insights',
     desc: 'Automated expiry alerts handle renewals while real-time analytics drive growth.',
     points: ['Automated expiry warnings', 'One-click plan renewal', 'Real-time analytics', 'Scale your gym'],
-    gradient: 'from-fuchsia-950/95 via-slate-900 to-slate-950',
-    borderGlow: 'border-fuchsia-500/60 group-hover:border-fuchsia-400 shadow-fuchsia-500/20',
+    gradient: 'from-emerald-950/95 via-slate-900 to-slate-950',
+    borderGlow: 'border-emerald-500/60 group-hover:border-emerald-400 shadow-emerald-500/20',
     badge: 'Step 6',
   },
 ];
@@ -335,7 +335,7 @@ const Carousel = memo(
                   </div>
 
                   <div className="my-auto space-y-1 sm:space-y-2 py-0.5">
-                    <h3 className="text-[11px] sm:text-base font-bold text-white group-hover:text-violet-300 transition-colors">
+                    <h3 className="text-[11px] sm:text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
                       {card.title}
                     </h3>
                     <p className="text-[9.5px] sm:text-xs text-slate-200 font-medium leading-tight sm:leading-relaxed line-clamp-3">
@@ -344,7 +344,7 @@ const Carousel = memo(
                   </div>
 
                   <div className="flex items-center justify-between border-t border-white/15 pt-1.5 sm:pt-3">
-                    <span className="text-[9.5px] sm:text-xs font-semibold text-violet-300 group-hover:text-white flex items-center gap-1">
+                    <span className="text-[9.5px] sm:text-xs font-semibold text-emerald-300 group-hover:text-white flex items-center gap-1">
                       Details <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                     </span>
                     <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-300 group-hover:text-amber-400 transition-colors" />
@@ -442,7 +442,7 @@ export default function ThreeDFeatureCarousel({
                       key={point}
                       className="flex items-center gap-2 rounded-lg bg-white/10 border border-white/10 p-1.5 text-xs text-slate-100 font-medium"
                     >
-                      <Sparkles className="h-3 w-3 text-violet-300 shrink-0" />
+                      <Sparkles className="h-3 w-3 text-emerald-300 shrink-0" />
                       <span className="truncate">{point}</span>
                     </div>
                   ))}
@@ -450,7 +450,7 @@ export default function ThreeDFeatureCarousel({
               </div>
 
               <div className="mt-5 flex gap-2.5">
-                <Button asChild className="flex-1 h-10 rounded-lg shadow-lg shadow-violet-500/25 font-bold text-xs">
+                <Button asChild className="flex-1 h-10 rounded-lg shadow-lg shadow-emerald-500/25 font-bold text-xs">
                   <Link to="/register">
                     {ctaPrefix} {activeCard.title.replace(/^\d+\.\s*/, '')}
                     <ArrowRight className="h-3.5 w-3.5 ml-1" />
@@ -470,7 +470,7 @@ export default function ThreeDFeatureCarousel({
       </AnimatePresence>
 
       <div className="text-center mb-3 sm:mb-5">
-        <p className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-violet-300 uppercase tracking-widest bg-violet-500/15 border border-violet-500/30 px-3.5 py-1 rounded-full animate-pulse shadow-sm">
+        <p className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-emerald-300 uppercase tracking-widest bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full animate-pulse shadow-sm">
           ↔ Drag to rotate • Click for details
         </p>
       </div>

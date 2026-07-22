@@ -79,7 +79,7 @@ export default function EventsPage() {
     <div className="space-y-6 page-enter stagger-children">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold gradient-text bg-gradient-to-r from-violet-400 to-fuchsia-400">Events</h1>
+          <h1 className="text-3xl font-bold gradient-text bg-gradient-to-r from-emerald-400 to-lime-300">Events</h1>
           <p className="text-slate-400 mt-1">Manage and track your gym events and workshops</p>
         </div>
         <Button onClick={() => { setSelectedEvent(null); setIsFormOpen(true); }} className="gap-2 shrink-0">
@@ -89,7 +89,7 @@ export default function EventsPage() {
 
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+          <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
         </div>
       ) : events?.length === 0 ? (
         <Card className="border-white/5 bg-white/[0.03]">
@@ -114,7 +114,7 @@ export default function EventsPage() {
               <Card key={event._id} className="overflow-hidden border-white/[0.06] bg-[rgba(15,23,42,0.5)] backdrop-blur-xl hover:translate-x-1 duration-300">
                 <CardContent className="p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-6">
                   {/* Left: Date badge in a gradient box */}
-                  <div className="flex flex-col items-center justify-center shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-600 via-indigo-600 to-fuchsia-600 shadow-md">
+                  <div className="flex flex-col items-center justify-center shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 via-green-600 to-lime-600 text-slate-950 shadow-md">
                     <span className="text-3xl font-extrabold text-white leading-none">{dayNum}</span>
                     <span className="text-[10px] uppercase font-bold text-white/80 tracking-widest mt-1">{monthStr}</span>
                   </div>
@@ -139,8 +139,8 @@ export default function EventsPage() {
                     <p className="text-xs text-slate-400 line-clamp-1 max-w-xl">{event.description}</p>
                     
                     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1 text-xs text-slate-400">
-                      <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5 text-violet-400" /> {event.time}</span>
-                      <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5 text-violet-400" /> {event.location}</span>
+                      <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5 text-emerald-400" /> {event.time}</span>
+                      <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5 text-emerald-400" /> {event.location}</span>
                       <span className="font-semibold text-slate-300">
                         Entry: {event.entryFee > 0 ? `₹${event.entryFee}` : 'Free'}
                       </span>

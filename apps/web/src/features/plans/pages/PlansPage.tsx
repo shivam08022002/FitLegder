@@ -69,7 +69,7 @@ export default function PlansPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-20 page-enter">
-        <Loader2 className="h-8 w-8 animate-spin text-violet-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
       </div>
     );
   }
@@ -85,7 +85,7 @@ export default function PlansPage() {
             {activePlansCount} plans active · Choose what fits your members
           </p>
         </div>
-        <Button onClick={() => setShowAddDialog(true)} className="gap-2 shrink-0 shadow-lg shadow-violet-500/20">
+        <Button onClick={() => setShowAddDialog(true)} className="gap-2 shrink-0 shadow-lg shadow-emerald-500/20">
           <Plus className="h-4 w-4" strokeWidth={1.5} /> Add Plan
         </Button>
       </div>
@@ -134,7 +134,7 @@ export default function PlansPage() {
                 </div>
 
                 <div className="mt-3 pb-3 border-b border-white/5">
-                  <span className="text-3xl font-extrabold gradient-text bg-gradient-to-r from-violet-400 to-fuchsia-400">{formatMoney(plan.price, gym?.currency)}</span>
+                  <span className="text-3xl font-extrabold gradient-text bg-gradient-to-r from-emerald-400 to-lime-300">{formatMoney(plan.price, gym?.currency)}</span>
                 </div>
                 {/* Features List */}
                 <div className="my-3 space-y-1.5">

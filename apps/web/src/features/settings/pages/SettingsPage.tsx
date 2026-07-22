@@ -91,7 +91,7 @@ export default function SettingsPage() {
         <CardContent>
           <div className="flex flex-wrap items-center gap-6">
             <div className="relative group shrink-0">
-              <div className="h-24 w-24 rounded-2xl bg-slate-800/20 border-2 border-dashed border-white/10 flex items-center justify-center overflow-hidden transition-colors group-hover:border-violet-500/50">
+              <div className="h-24 w-24 rounded-2xl bg-slate-800/20 border-2 border-dashed border-white/10 flex items-center justify-center overflow-hidden transition-colors group-hover:border-emerald-400">
                 {logoPreview ? (
                   <img src={logoPreview} alt="Gym logo" className="h-full w-full object-cover animate-scale-in" />
                 ) : (
@@ -108,7 +108,7 @@ export default function SettingsPage() {
               <p className="mt-0.5">Click layout box to search files.</p>
               <p className="text-[10px] text-slate-500 mt-1">PNG, JPG or SVG formats supported</p>
               {logoMutation.isPending && (
-                <p className="text-xs text-violet-400 mt-2 flex items-center gap-1.5 font-semibold">
+                <p className="text-xs text-emerald-400 mt-2 flex items-center gap-1.5 font-semibold">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" /> Uploading logo image...
                 </p>
               )}
@@ -151,13 +151,16 @@ export default function SettingsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="text-xs uppercase tracking-widest text-slate-400">Currency</Label>
-                <select {...register('currency')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
-                  {currencies.map((c) => <option key={c} value={c}>{c}</option>)}
+                <select {...register('currency')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
+                  <option value="INR">INR (₹)</option>
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
                 </select>
               </div>
               <div className="space-y-2">
-                <Label className="text-xs uppercase tracking-widest text-slate-400">Timezone</Label>
-                <select {...register('timezone')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-violet-500/50">
+                <Label htmlFor="timezone" className="text-xs uppercase tracking-widest text-slate-400">Timezone</Label>
+                <select {...register('timezone')} className="flex h-10 w-full rounded-xl border border-white/5 bg-slate-800/30 px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:border-emerald-400/60">
                   {timezones.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
